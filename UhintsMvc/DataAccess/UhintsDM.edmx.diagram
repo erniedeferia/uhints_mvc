@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ea336a87ec5a4fc5b3d923be9df54508" Name="Diagram1" ZoomLevel="89">
+        <EntityTypeShape EntityType="UnifiedhintsModel.Content" Width="1.5" PointX="3.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.File" Width="1.5" PointX="8.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.FileStatu" Width="1.5" PointX="6" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.Folder" Width="1.5" PointX="6" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.Link" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.MessageSentByFax" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.PricingPlan" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.RoleContentAccess" Width="1.5" PointX="6" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.Role" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.tbl_Ailment_CustSurgeries" Width="1.5" PointX="7.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.tbl_Ailments" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.tbl_Assets" Width="1.5" PointX="10.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.tbl_Customer_Ailment" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.tbl_Customer_Allergies" Width="1.5" PointX="13.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.tbl_Customer_Medications" Width="1.5" PointX="12.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.tbl_Customer_Providers" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.tbl_Customer_Schedule" Width="1.5" PointX="9.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.tbl_Customer_Surgery" Width="1.5" PointX="14.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.tbl_Customers" Width="1.5" PointX="11" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.tbl_CustomerStatus" Width="1.5" PointX="14.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.tbl_DocumentationInfo" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.tbl_EmergencyContacts" Width="1.5" PointX="2.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.tbl_EmployerInfo" Width="1.5" PointX="15.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.tbl_InsuranceInfo" Width="1.5" PointX="16.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.tbl_Roles" Width="1.5" PointX="13" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.tbl_States" Width="1.5" PointX="8.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.tbl_Surgeries" Width="1.5" PointX="16.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.tbl_Surgery_CustAilments" Width="1.5" PointX="16.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.tbl_UserLoginInfo" Width="1.5" PointX="17.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.tbl_Users" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.tbl_UsersHealthRecordsAccess" Width="1.5" PointX="16.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.UserLogin" Width="1.5" PointX="5.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.tbl_Users_Customers" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.view_Ailments" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.view_Customer_Ailments" Width="1.5" PointX="18.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.view_Customer_Surgeries" Width="1.5" PointX="4.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnifiedhintsModel.view_Surgeries" Width="1.5" PointX="6.75" PointY="18.75" IsExpanded="true" />
+        <AssociationConnector Association="UnifiedhintsModel.FK_RoleContentAccess_Content" ManuallyRouted="false" />
+        <AssociationConnector Association="UnifiedhintsModel.fk_FileStatus_Files" ManuallyRouted="false" />
+        <AssociationConnector Association="UnifiedhintsModel.fk_Folders_Files" ManuallyRouted="false" />
+        <AssociationConnector Association="UnifiedhintsModel.fk_Users_Files" ManuallyRouted="false" />
+        <AssociationConnector Association="UnifiedhintsModel.FK_RoleContentAccess_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="UnifiedhintsModel.FK_tbl_Customers_tbl_States" ManuallyRouted="false" />
+        <AssociationConnector Association="UnifiedhintsModel.FK_UserLogin_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="UnifiedhintsModel.UserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="UnifiedhintsModel.tbl_Role_Asset_Permissions" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,517 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UnifiedhintsModelStoreContainer" CdmEntityContainer="UnifiedhintsEntities">
+    <EntitySetMapping Name="Contents">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.Content">
+        <MappingFragment StoreEntitySet="Content">
+          <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Files">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.File">
+        <MappingFragment StoreEntitySet="Files">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="directoryFileId" ColumnName="directoryFileId" />
+          <ScalarProperty Name="fileName" ColumnName="fileName" />
+          <ScalarProperty Name="folderId" ColumnName="folderId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="statusId" ColumnName="statusId" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FileStatus">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.FileStatu">
+        <MappingFragment StoreEntitySet="FileStatus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="statusName" ColumnName="statusName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Folders">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.Folder">
+        <MappingFragment StoreEntitySet="Folders">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="folderName" ColumnName="folderName" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Links">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.Link">
+        <MappingFragment StoreEntitySet="Links">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="Link1" ColumnName="Link" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MessageSentByFaxes">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.MessageSentByFax">
+        <MappingFragment StoreEntitySet="MessageSentByFax">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="messageId" ColumnName="messageId" />
+          <ScalarProperty Name="messageStatus" ColumnName="messageStatus" />
+          <ScalarProperty Name="recipientFaxNumber" ColumnName="recipientFaxNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PricingPlans">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.PricingPlan">
+        <MappingFragment StoreEntitySet="PricingPlan">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PlanName" ColumnName="PlanName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="MonthlyPrice" ColumnName="MonthlyPrice" />
+          <ScalarProperty Name="AnnuallyPrice" ColumnName="AnnuallyPrice" />
+          <ScalarProperty Name="PromotionCode" ColumnName="PromotionCode" />
+          <ScalarProperty Name="PromoBasePlanId" ColumnName="PromoBasePlanId" />
+          <ScalarProperty Name="PromoAvailabilityStartDate" ColumnName="PromoAvailabilityStartDate" />
+          <ScalarProperty Name="PromoAvailabilityEndDate" ColumnName="PromoAvailabilityEndDate" />
+          <ScalarProperty Name="PromoDurationAnnually" ColumnName="PromoDurationAnnually" />
+          <ScalarProperty Name="PromoDurationMonthly" ColumnName="PromoDurationMonthly" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleContentAccesses">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.RoleContentAccess">
+        <MappingFragment StoreEntitySet="RoleContentAccess">
+          <ScalarProperty Name="RoleContentAccessId" ColumnName="RoleContentAccessId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Ailment_CustSurgeries">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Ailment_CustSurgeries">
+        <MappingFragment StoreEntitySet="tbl_Ailment_CustSurgeries">
+          <ScalarProperty Name="ailment_custSurgery_id" ColumnName="ailment_custSurgery_id" />
+          <ScalarProperty Name="ailment_id" ColumnName="ailment_id" />
+          <ScalarProperty Name="cust_surgery_id" ColumnName="cust_surgery_id" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+          <ScalarProperty Name="change_date" ColumnName="change_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Ailments">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Ailments">
+        <MappingFragment StoreEntitySet="tbl_Ailments">
+          <ScalarProperty Name="ailment_id" ColumnName="ailment_id" />
+          <ScalarProperty Name="ailment_name" ColumnName="ailment_name" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+          <ScalarProperty Name="change_date" ColumnName="change_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Assets">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Assets">
+        <MappingFragment StoreEntitySet="tbl_Assets">
+          <ScalarProperty Name="Asset_Id" ColumnName="Asset_Id" />
+          <ScalarProperty Name="AssetName" ColumnName="AssetName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Customer_Ailment">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Customer_Ailment">
+        <MappingFragment StoreEntitySet="tbl_Customer_Ailment">
+          <ScalarProperty Name="cust_ailment_id" ColumnName="cust_ailment_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="ailment_id" ColumnName="ailment_id" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+          <ScalarProperty Name="change_date" ColumnName="change_date" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="ailment_nickname" ColumnName="ailment_nickname" />
+          <ScalarProperty Name="new_value" ColumnName="new_value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Customer_Allergies">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Customer_Allergies">
+        <MappingFragment StoreEntitySet="tbl_Customer_Allergies">
+          <ScalarProperty Name="allergy_id" ColumnName="allergy_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="allergy_name" ColumnName="allergy_name" />
+          <ScalarProperty Name="allergy_desc" ColumnName="allergy_desc" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+          <ScalarProperty Name="change_date" ColumnName="change_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Customer_Medications">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Customer_Medications">
+        <MappingFragment StoreEntitySet="tbl_Customer_Medications">
+          <ScalarProperty Name="medication_id" ColumnName="medication_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="provider_id" ColumnName="provider_id" />
+          <ScalarProperty Name="medication_name" ColumnName="medication_name" />
+          <ScalarProperty Name="medication_desc" ColumnName="medication_desc" />
+          <ScalarProperty Name="medication_dose" ColumnName="medication_dose" />
+          <ScalarProperty Name="medication_route" ColumnName="medication_route" />
+          <ScalarProperty Name="medication_frequency" ColumnName="medication_frequency" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+          <ScalarProperty Name="change_date" ColumnName="change_date" />
+          <ScalarProperty Name="FIXEDOTC" ColumnName="FIXEDOTC" />
+          <ScalarProperty Name="OTC" ColumnName="OTC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Customer_Providers">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Customer_Providers">
+        <MappingFragment StoreEntitySet="tbl_Customer_Providers">
+          <ScalarProperty Name="provider_id" ColumnName="provider_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="provider_name" ColumnName="provider_name" />
+          <ScalarProperty Name="address1" ColumnName="address1" />
+          <ScalarProperty Name="address2" ColumnName="address2" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="specialty" ColumnName="specialty" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="first" ColumnName="first" />
+          <ScalarProperty Name="last" ColumnName="last" />
+          <ScalarProperty Name="zip" ColumnName="zip" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="website" ColumnName="website" />
+          <ScalarProperty Name="comments" ColumnName="comments" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+          <ScalarProperty Name="change_date" ColumnName="change_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Customer_Schedule">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Customer_Schedule">
+        <MappingFragment StoreEntitySet="tbl_Customer_Schedule">
+          <ScalarProperty Name="schedule_id" ColumnName="schedule_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="provider_id" ColumnName="provider_id" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+          <ScalarProperty Name="change_date" ColumnName="change_date" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="event_name" ColumnName="event_name" />
+          <ScalarProperty Name="reason" ColumnName="reason" />
+          <ScalarProperty Name="allday" ColumnName="allday" />
+          <ScalarProperty Name="columnnew" ColumnName="columnnew" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Customer_Surgery">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Customer_Surgery">
+        <MappingFragment StoreEntitySet="tbl_Customer_Surgery">
+          <ScalarProperty Name="cust_surgery_id" ColumnName="cust_surgery_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="surgery_id" ColumnName="surgery_id" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+          <ScalarProperty Name="change_date" ColumnName="change_date" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="surgery_desc" ColumnName="surgery_desc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Customers">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Customers">
+        <MappingFragment StoreEntitySet="tbl_Customers">
+          <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+          <ScalarProperty Name="SocialSecurityNo" ColumnName="SocialSecurityNo" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Race" ColumnName="Race" />
+          <ScalarProperty Name="Ethnicity" ColumnName="Ethnicity" />
+          <ScalarProperty Name="LanguageKnown" ColumnName="LanguageKnown" />
+          <ScalarProperty Name="PrimaryAddress" ColumnName="PrimaryAddress" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State_Id" ColumnName="State_Id" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+          <ScalarProperty Name="HomePhoneNumber" ColumnName="HomePhoneNumber" />
+          <ScalarProperty Name="CellPhoneNumber" ColumnName="CellPhoneNumber" />
+          <ScalarProperty Name="WorkPhoneNumber" ColumnName="WorkPhoneNumber" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+          <ScalarProperty Name="CitizenshipStatus" ColumnName="CitizenshipStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_CustomerStatus">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_CustomerStatus">
+        <MappingFragment StoreEntitySet="tbl_CustomerStatus">
+          <ScalarProperty Name="CustomerStatus_Id" ColumnName="CustomerStatus_Id" />
+          <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="EmergencyContact_Id" ColumnName="EmergencyContact_Id" />
+          <ScalarProperty Name="EmployerInfo_Id" ColumnName="EmployerInfo_Id" />
+          <ScalarProperty Name="InsuranceInfo_Id" ColumnName="InsuranceInfo_Id" />
+          <ScalarProperty Name="UpdateTimeStamp" ColumnName="UpdateTimeStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_DocumentationInfo">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_DocumentationInfo">
+        <MappingFragment StoreEntitySet="tbl_DocumentationInfo">
+          <ScalarProperty Name="DocumentationInfo_Id" ColumnName="DocumentationInfo_Id" />
+          <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+          <ScalarProperty Name="DocumentType" ColumnName="DocumentType" />
+          <ScalarProperty Name="DocumentStatus" ColumnName="DocumentStatus" />
+          <ScalarProperty Name="ReceivedBy" ColumnName="ReceivedBy" />
+          <ScalarProperty Name="DocumentNo" ColumnName="DocumentNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_EmergencyContacts">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_EmergencyContacts">
+        <MappingFragment StoreEntitySet="tbl_EmergencyContacts">
+          <ScalarProperty Name="EmergencyContact_Id" ColumnName="EmergencyContact_Id" />
+          <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="RelationshiptoPatient" ColumnName="RelationshiptoPatient" />
+          <ScalarProperty Name="ContactAddress" ColumnName="ContactAddress" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State_Id" ColumnName="State_Id" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+          <ScalarProperty Name="IsSameAsPatientsAddress" ColumnName="IsSameAsPatientsAddress" />
+          <ScalarProperty Name="HomePhoneNumber" ColumnName="HomePhoneNumber" />
+          <ScalarProperty Name="CellPhoneNumber" ColumnName="CellPhoneNumber" />
+          <ScalarProperty Name="WorkPhoneNumber" ColumnName="WorkPhoneNumber" />
+          <ScalarProperty Name="IsALegalGuardian" ColumnName="IsALegalGuardian" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_EmployerInfo">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_EmployerInfo">
+        <MappingFragment StoreEntitySet="tbl_EmployerInfo">
+          <ScalarProperty Name="EmployerInfo_Id" ColumnName="EmployerInfo_Id" />
+          <ScalarProperty Name="EmployerName" ColumnName="EmployerName" />
+          <ScalarProperty Name="EmploymentStatus" ColumnName="EmploymentStatus" />
+          <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_InsuranceInfo">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_InsuranceInfo">
+        <MappingFragment StoreEntitySet="tbl_InsuranceInfo">
+          <ScalarProperty Name="InsuranceInfo_Id" ColumnName="InsuranceInfo_Id" />
+          <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="PolicyNumber" ColumnName="PolicyNumber" />
+          <ScalarProperty Name="PlanType" ColumnName="PlanType" />
+          <ScalarProperty Name="AuthorizationNumber" ColumnName="AuthorizationNumber" />
+          <ScalarProperty Name="SubscriberAddress" ColumnName="SubscriberAddress" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State_Id" ColumnName="State_Id" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+          <ScalarProperty Name="InsuranceVerificationType" ColumnName="InsuranceVerificationType" />
+          <ScalarProperty Name="RelationshiptoPatient" ColumnName="RelationshiptoPatient" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Roles">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Roles">
+        <MappingFragment StoreEntitySet="tbl_Roles">
+          <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_States">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_States">
+        <MappingFragment StoreEntitySet="tbl_States">
+          <ScalarProperty Name="State_Id" ColumnName="State_Id" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="StateAbbreviation" ColumnName="StateAbbreviation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Surgeries">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Surgeries">
+        <MappingFragment StoreEntitySet="tbl_Surgeries">
+          <ScalarProperty Name="surgery_id" ColumnName="surgery_id" />
+          <ScalarProperty Name="surgery_name" ColumnName="surgery_name" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+          <ScalarProperty Name="change_date" ColumnName="change_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Surgery_CustAilments">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Surgery_CustAilments">
+        <MappingFragment StoreEntitySet="tbl_Surgery_CustAilments">
+          <ScalarProperty Name="surgery_custAilment_id" ColumnName="surgery_custAilment_id" />
+          <ScalarProperty Name="surgery_id" ColumnName="surgery_id" />
+          <ScalarProperty Name="cust_ailment_id" ColumnName="cust_ailment_id" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+          <ScalarProperty Name="change_date" ColumnName="change_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_UserLoginInfo">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_UserLoginInfo">
+        <MappingFragment StoreEntitySet="tbl_UserLoginInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="LoginDateTime" ColumnName="LoginDateTime" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Users">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Users">
+        <MappingFragment StoreEntitySet="tbl_Users">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Organization" ColumnName="Organization" />
+          <ScalarProperty Name="PrimaryAddress" ColumnName="PrimaryAddress" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State_Id" ColumnName="State_Id" />
+          <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+          <ScalarProperty Name="HomePhoneNumber" ColumnName="HomePhoneNumber" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+          <ScalarProperty Name="validation" ColumnName="validation" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="SocialSecurityNo" ColumnName="SocialSecurityNo" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Race" ColumnName="Race" />
+          <ScalarProperty Name="Ethnicity" ColumnName="Ethnicity" />
+          <ScalarProperty Name="LanguageKnown" ColumnName="LanguageKnown" />
+          <ScalarProperty Name="CellPhoneNumber" ColumnName="CellPhoneNumber" />
+          <ScalarProperty Name="WorkPhoneNumber" ColumnName="WorkPhoneNumber" />
+          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+          <ScalarProperty Name="CitizenshipStatus" ColumnName="CitizenshipStatus" />
+          <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="Plan_Id" ColumnName="Plan_Id" />
+          <ScalarProperty Name="MembershipBillingCycle" ColumnName="MembershipBillingCycle" />
+          <ScalarProperty Name="MembershipDueDate" ColumnName="MembershipDueDate" />
+          <ScalarProperty Name="ANetSubscriptionId" ColumnName="ANetSubscriptionId" />
+          <ScalarProperty Name="ANetCustomerProfileId" ColumnName="ANetCustomerProfileId" />
+          <ScalarProperty Name="ANetCustomerPaymentProfileId" ColumnName="ANetCustomerPaymentProfileId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_UsersHealthRecordsAccess">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_UsersHealthRecordsAccess">
+        <MappingFragment StoreEntitySet="tbl_UsersHealthRecordsAccess">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="accessToken" ColumnName="accessToken" />
+          <ScalarProperty Name="phraseKey" ColumnName="phraseKey" />
+          <ScalarProperty Name="notifyingEmail" ColumnName="notifyingEmail" />
+          <ScalarProperty Name="notifyingPerson" ColumnName="notifyingPerson" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLogins">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.UserLogin">
+        <MappingFragment StoreEntitySet="UserLogin">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="FailedAttemptCount" ColumnName="FailedAttemptCount" />
+          <ScalarProperty Name="LockedEndDtUTC" ColumnName="LockedEndDtUTC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Users_Customers">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Users_Customers">
+        <MappingFragment StoreEntitySet="tbl_Users_Customers">
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_Ailments">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.view_Ailments">
+        <MappingFragment StoreEntitySet="view_Ailments">
+          <ScalarProperty Name="ailment_id" ColumnName="ailment_id" />
+          <ScalarProperty Name="ailment_name" ColumnName="ailment_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_Customer_Ailments">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.view_Customer_Ailments">
+        <MappingFragment StoreEntitySet="view_Customer_Ailments">
+          <ScalarProperty Name="ailment_id" ColumnName="ailment_id" />
+          <ScalarProperty Name="ailment_name" ColumnName="ailment_name" />
+          <ScalarProperty Name="cust_ailment_id" ColumnName="cust_ailment_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_Customer_Surgeries">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.view_Customer_Surgeries">
+        <MappingFragment StoreEntitySet="view_Customer_Surgeries">
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="surgery_name" ColumnName="surgery_name" />
+          <ScalarProperty Name="surgery_id" ColumnName="surgery_id" />
+          <ScalarProperty Name="surgery_desc" ColumnName="surgery_desc" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_Surgeries">
+      <EntityTypeMapping TypeName="UnifiedhintsModel.view_Surgeries">
+        <MappingFragment StoreEntitySet="view_Surgeries">
+          <ScalarProperty Name="surgery_id" ColumnName="surgery_id" />
+          <ScalarProperty Name="surgery_name" ColumnName="surgery_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UserRoles" TypeName="UnifiedhintsModel.UserRoles" StoreEntitySet="UserRoles">
+      <EndProperty Name="Roles">
+        <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="tbl_Users">
+        <ScalarProperty Name="user_id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="tbl_Role_Asset_Permissions" TypeName="UnifiedhintsModel.tbl_Role_Asset_Permissions" StoreEntitySet="tbl_Role_Asset_Permissions">
+      <EndProperty Name="tbl_Assets">
+        <ScalarProperty Name="Asset_Id" ColumnName="Asset_Id" />
+      </EndProperty>
+      <EndProperty Name="tbl_Roles">
+        <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

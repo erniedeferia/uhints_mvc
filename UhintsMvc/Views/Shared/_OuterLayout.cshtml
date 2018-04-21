@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head runat="server">
+    <title>UNIFIED H.I.N.T.S</title>
+    <link rel="icon" type="image/png" href="images/uhints-icon-original-cropped.png" />
+    <meta name="description" content="UNIFIED H.I.N.T.S is a user friendly web based Personal Health Record (PHR) designed to empower YOU, the healthcare consumer." />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap -->
+    <!--<link href="css/font-awesome.min.css" rel="stylesheet" /> -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,400italic' rel='stylesheet' type='text/css' />
+    <link href="~/Content/css/unified-hints.css" rel="stylesheet" />
+    <link href="~/Content/css/home-hints-style.css" rel="stylesheet" />
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script src="../js/pwstrength-bootstrap.js"></script>
+
+    <!-- DateTimePicker -->
+    <script type="text/javascript" src="../js/moment.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+
+    <!-- Jquery Mask Plugin -->
+    <script type="text/javascript" src="../js/jquery.mask.js"></script>
+
+    <!-- Calendar  CSS Take this out later-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Themes/navigator_blue.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Themes/menu_default.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Themes/bubble_default.css" />
+    <link type="text/css" href='~/Content/Themes/traditional.css' rel="stylesheet" />
+    <link type="text/css" href='~/Content/Themes/bubble_default.css' rel="stylesheet" />
+    <link type="text/css" href='~/Content/Themes/menu_default.css' rel="stylesheet" />
+    <link type="text/css" href='~/Content/Themes/navigator_blue.css' rel="stylesheet" />
+    <link type="text/css" href='~/Content/Themes/navigator_white.css' rel="stylesheet" />
+    <link type="text/css" href="~/Content/Themes/navigator_green.css" rel="stylesheet" />
+    <link type="text/css" href='~/Content/Themes/navigator_transparent.css' rel="stylesheet" />
+    <link type="text/css" href='~/Content/Themes/navigator_8.css' rel="stylesheet" />
+    <link type="text/css" href="~/Content/Themes/calendar_green.css" rel="stylesheet" />
+    <link type="text/css" href='~/Content/Themes/calendar_blue.css' rel="stylesheet" />
+    <link type="text/css" href='~/Content/Themes/calendar_white.css' rel="stylesheet" />
+    <link type="text/css" href='~/Content/Themes/calendar_transparent.css' rel="stylesheet" />
+    <link type="text/css" href="~/Content/Themes/month_green.css" rel="stylesheet" />
+    <link type="text/css" href='~/Content/Themes/month_blue.css' rel="stylesheet" />
+    <link type="text/css" href='~/Content/Themes/month_white.css' rel="stylesheet" />
+    <link type="text/css" href='~/Content/Themes/month_transparent.css' rel="stylesheet" />
+    <link type="text/css" href='~/Content/Themes/scheduler_green.css' rel="stylesheet" />
+    <link type="text/css" href='~/Content/Themes/scheduler_blue.css' rel="stylesheet" />
+    <link type="text/css" href='~/Content/Themes/scheduler_white.css' rel="stylesheet" />
+    <link type="text/css" href='~/Content/Themes/scheduler_transparent.css' rel="stylesheet" />
+    <link type="text/css" href='~/Content/Themes/scheduler_8.css' rel="stylesheet" />
+    <link type="text/css" href='~/Content/Themes/areas.css' rel="stylesheet" />
+    @*<asp:ContentPlaceHolder ID="Head" runat="server" />*@
+</head>
+<body>
+    <div class="content-wrapper">
+
+            <div>
+                <asp:ScriptManager ID="ScriptManagerReference" runat="server" EnablePageMethods="true">
+                </asp:ScriptManager>
+                <div id="Content"></div>
+            </div>
+            <div class="inner-content">
+                <nav class="navbar navbar-default">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#<%= navigationBar.ClientID%>" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand hidden-lg hidden-md" title="UNIFIED H.I.N.T.S" href="../index.aspx"><img src="../images/uhints-logo.jpg" /></a>
+                        <a class="navbar-brand visible-lg visible-md" title="UNIFIED H.I.N.T.S" href="../index.aspx"><img src="../images/uhints-logo.jpg" /></a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="navigationBar" runat="server">
+                        <ul class="nav navbar-nav navbar-right nav-ptop hidden-xs visible-sm visible-md visible-lg">
+                            <li><a href='@Url.Action("Index")'>WELCOME<span class="sr-only">(current)</span></a></li>
+                            <li><a href='@Url.Action("Index")'>SERVICES</a></li>
+                            <li><a href='@Url.Action("Index")'>HOW IT WORKS</a></li>
+                            <li><a href='@Url.Action("Index")'>PRICING</a></li>
+                            <li><a href='@Url.Action("Index")'>ABOUT US</a></li>
+                            <li><a href='@Url.Action("Index")'>CONTACT US</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right nav-ptop visible-xs hidden-sm hidden-md hidden-lg">
+                            <% if (UserIsAuthenticated)
+                            {%>
+                            <li><a href='<%=Page.ResolveClientUrl("~/CustomerManagement/Dashboard.aspx")%>'>Dashboard</a></li>
+                            <li><a href='<%=Page.ResolveClientUrl("~/CustomerManagement/Profile.aspx")%>'>My Profile</a></li>
+                            <li><a href='<%=Page.ResolveClientUrl("~/CustomerManagement/Providers.aspx")%>'>Providers</a></li>
+                            <li><a href='<%=Page.ResolveClientUrl("~/CustomerManagement/Medication.aspx")%>'>Medications And Allergies</a></li>
+                            <li><a href='<%=Page.ResolveClientUrl("~/CustomerManagement/ManageHealth.aspx")%>'>Medical History</a></li>
+                            <li><a href='<%=Page.ResolveClientUrl("~/CustomerManagement/SurgeriesProcedures.aspx")%>'>Surgeries And Procedures</a></li>
+                            <li><a href='<%=Page.ResolveClientUrl("~/CustomerManagement/AppointmentSchedule.aspx")%>'>Appointments Schedule</a></li>
+                            <li><a href='<%=Page.ResolveClientUrl("~/CustomerManagement/PrintRecord.aspx")%>'>Print Health Records</a></li>
+                            <li><a href='<%=Page.ResolveClientUrl("~/CustomerManagement/DocumentLibrary.aspx")%>'>Documents Library</a></li>
+                            <li><a href='<%=Page.ResolveClientUrl("~/CustomerManagement/Links.aspx")%>'>Helpful Links</a></li>
+                            <li><a href='<%=Page.ResolveClientUrl("~/CustomerManagement/AdminResetPassword.aspx")%>'>Reset User Password</a></li>
+                            <li><a href='<%=Page.ResolveClientUrl("~/LoginManagement/Logout.aspx")%>'>Log out</a></li>
+                            <% } else {%>
+                            <li><a href='<%=Page.ResolveClientUrl("~/Index.aspx")%>'>WELCOME<span class="sr-only">(current)</span></a></li>
+                            <li><a href='<%=Page.ResolveClientUrl("~/Service.aspx")%>'>SERVICES</a></li>
+                            <li><a href='<%=Page.ResolveClientUrl("~/HowItWorks.aspx")%>'>HOW IT WORKS</a></li>
+                            <li><a href='<%=Page.ResolveClientUrl("~/MembershipPricing.aspx")%>'>PRICING</a></li>
+                            <li><a href='<%=Page.ResolveClientUrl("~/About.aspx")%>'>ABOUT US</a></li>
+                            <li><a href='<%=Page.ResolveClientUrl("~/Contact.aspx")%>'>CONTACT US</a></li>
+                            <% } %>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </nav>
+                <!-- Main -->
+
+                <div class="MAIN">
+                    <div class="row fixedBar" id="greenRibbon" runat="server">
+                        <div class="col-xs-12 bar-username">
+
+                            <h4 class="pull-left">
+                                <a href="tel:7866647712"><i class="fa fa-phone e-mail-phone-link" aria-hidden="true"></i><span class="hide-xs"> 786-664-7712</span></a> &nbsp; <a href="mailto:info@unifiedhints.com"><i class="fa fa-envelope e-mail-phone-link" aria-hidden="true"></i> <span class="hide-xs">info@unifiedhints.com</span></a>
+                            </h4>
+
+
+                            @if (false)
+                            {
+                                 <h4 class="pull-right">
+                                    <span class="hidden-xs hidden-sm">You are currently logged in as</span>
+                                    <i class="fa fa-user color-primary" style="margin:0 10px;" aria-hidden="true"></i>
+                                    <!--<strong class="color-primary">Abel Ferro</strong>-->
+                                    <a href = "#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="providerNameSpan" runat="server"><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href = '<%=Page.ResolveClientUrl("~/CustomerManagement/Dashboard.aspx")%>' > Dashboard </a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href = '<%=Page.ResolveClientUrl("~/CustomerManagement/ChangePassword.aspx")%>' > Reset password</a></li>
+                                        <li role = "separator" class="divider"></li>
+                                        <li><a href = '<%=Page.ResolveClientUrl("~/LoginManagement/Logout.aspx")%>' > Log out</a></li>
+                                    </ul>
+                                </h4>
+                            }
+                            else
+                            { 
+                                <h4 class="pull-right">
+                                    <i class="fa fa-sign-in color-primary" aria-hidden="true"></i>
+                                    <a href="log-in.aspx" role="button">Login</a>
+                                    <i class="fa fa-user-plus color-primary" style="margin-left:15px;" aria-hidden="true"></i>
+                                    <a href="Registration.aspx" role="button">Register</a>
+                                </h4>
+                            }
+                        </div>
+                    </div>
+                    <div class="container-box fh">
+                        @RenderBody()
+                    </div>
+                </div>
+                <!-- Main -->
+
+            </div>
+
+        <div class="row text-center mbottom40 pbottom40 mtop60">
+            <div class="" style="display: inline-block;">
+                <a href="#"><img src="../img/apple-app-store-icon.png" alt="apple-app" width="150" height="auto" style="padding: 0 10px;"></a>
+                <a href="#"><img src="../img/google-app-icon.png" alt="google-app" width="150" height="auto" style="padding: 0 10px;"></a>
+            </div>
+        </div>
+        <footer class="footer ptop10">
+            <div class="container-fluid mtop20">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <p class="text-muted pull-left" style="margin:9px 0;">
+                            Privacy Policy &nbsp; <a href="../Files/PrivacyPolice/UHINTS_ABBREV_PRIV_POLICY.pdf" target="_blank" title="Abbreviated Privacy Policy" class="mbottom20">
+                                <i class="fa fa fa-file-text"></i>
+                            </a>
+                            <a href="../Files/PrivacyPolice/UNIFIEDHINTS_Full_Privacy_Policy.pdf" target="_blank" title="Full Privacy Policy" class="mbottom20">
+                                <i class="fa fa fa-file-text-o"></i>
+                            </a> / Call <a href="tel:7866647712"><i class="fa fa-phone e-mail-phone-link" aria-hidden="true"></i><span class="hide-xs"> 786-664-7712</span></a>
+                        </p>
+                    </div>
+                    <div class="col-sm-4">
+                        <p class="text-center">
+                            <a href="https://www.facebook.com/Unified-HINTS-702222953303996">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x" aria-hidden="true"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                                </span>
+                            </a>
+
+                            <a href="https://plus.google.com/107676756723825041376">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x" aria-hidden="true"></i>
+                                    <i class="fa fa-google fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                                </span>
+                            </a>
+                            <a href="https://twitter.com/UnifiedHINTS">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x" aria-hidden="true"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                                </span>
+                            </a>
+                            <a href="https://www.instagram.com/UnifiedH.I.N.T.S/">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x" aria-hidden="true"></i>
+                                    <i class="fa fa-instagram fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                                </span>
+                            </a>
+                        </p>
+                    </div>
+                    <div class="col-sm-4">
+                        <p class="text-muted pull-right" style="margin:9px 0;">Copyright 2017. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>

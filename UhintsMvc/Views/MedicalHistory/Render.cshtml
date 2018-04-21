@@ -1,0 +1,211 @@
+<div class="content-main">
+    	<div class="title-form-content">
+	        <h3 class="mtop10">Medical History</h3>
+        </div>
+        
+        <div class="content-form">
+            <form action="add"  method="post">
+                <span class="alert alert-success alert-dismissible" id="Message" role="alert" style="display: none;"></span>
+                <h5 class="mtop40 pbottom10" style="border-bottom:1px solid #e5e5e5">Medical History</h5>
+                    <div class="row bg-white">
+                    <div class="form-group col-lg-4">
+                        <div class="mtop20">
+                            <label class="control-label">Medical Diagnosis</label>
+                            
+                            <input name="Name" class="form-control input" id="Name" type="text">
+                        </div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                        <div class="mtop20">
+                            <label class="control-label">Medical Diagnosis Nickname</label>
+                            
+                            <input name="Nickname" class="form-control input" id="Nickname" type="text">
+                        </div>
+                        </div>
+                </div>
+                <div class="row bg-white">
+                    <div class="col-lg-4 form-group mtop10">
+                        <label class="control-label">Start Date</label>
+                            <div>
+                                <div class="input-group date" id="datetimepicker1">
+                                    
+                                    <input name="StartDt" class="form-control input" id="StartDt" type="text" placeholder="MM/DD/YY">
+                                    <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                                </div>
+  
+                            </div>
+                    </div>
+                    <div class="col-lg-4 form-group mtop10">
+                        <label class="control-label">End Date</label>
+                            <div>
+                                <div class="input-group date" id="datetimepicker2">
+                                    
+                                    <input name="EndDt" class="form-control input" id="EndDt" type="text" placeholder="MM/DD/YY">
+                                    <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                                </div>
+                            </div>
+                    </div>
+                </div>          
+
+                <div class="row">
+                        <div class="btn-group col-lg-12 mtop20" role="group" aria-label="...">
+                        <div class="btn-group" role="group">
+                            
+                            <input name="submit" class="btn btn-primary" id="saveAilmentBtn" aria-expanded="false" aria-haspopup="true" type="submit" value="Add Record">
+                        </div>
+                        </div>
+                </div>
+            </form>
+                
+            <div class="mtop20  content-form" id="UserAilmentList">
+                <h5 class="mtop40 pbottom10" style="border-bottom:1px solid #e5e5e5">My Medical Diagnoses List</h5>
+                <div class="bg-white"> 
+                    
+                            <table class="table uhintTable" id="MedicalRecords">
+                            	<thead class="table-header-hints">
+                                    <tr style="background-color: #e9f7f5">
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Nickname</th>
+                                        <th scope="col">Start Date</th>
+                                        <th scope="col">End Date</th>
+                                        <th class="col-md-2" scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                            <tr>
+                                <td data-label="Name">
+                                    <span id="">short-sightedness</span>
+                                    
+                                </td>
+                                <td data-label="Nickname">
+                                    <span id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl0_ailment_nicknameLabel">Mr Magoo</span>
+                                </td>
+                                <td data-label="Start Date">
+                                    <span id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl0_start_dateLabel">02/13/2017</span>
+                                </td>
+                                <td data-label="End Date">
+                                    <span id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl0_end_dateLabel"></span>
+                                <div style="height:16px;"></div></td>
+                                <td data-label="">
+                                    <a class="action-icon" id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl0_EditBtn" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$ctl00$UHINTContent$UHINTContent$ListView1$ctrl0$EditBtn", "", true, "", "", false, true))'>
+                                        <i class="fa fa-2x fa-edit" aria-hidden="true"></i>
+                                    </a>
+                                    <a class="action-icon" id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl0_DeleteBtn" onclick="return confirm('Delete this entry from Medical History?');" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$ctl00$UHINTContent$UHINTContent$ListView1$ctrl0$DeleteBtn", "", true, "", "", false, true))'>
+                                        <i class="fa fa-2x fa-times" aria-hidden="true"></i>
+                                    </a>
+                                </td>     
+                            </tr>
+                        
+		
+                            <tr>
+                                <td data-label="Name">
+                                    <span id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl1_ailment_nameLabel">hair loss</span>
+                                </td>
+                                <td data-label="Nickname">
+                                    <span id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl1_ailment_nicknameLabel">bold</span>
+                                </td>
+                                <td data-label="Start Date">
+                                    <span id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl1_start_dateLabel">04/10/2018</span>
+                                </td>
+                                <td data-label="End Date">
+                                    <span id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl1_end_dateLabel"></span>
+                                <div style="height:16px;"></div></td>
+                                <td data-label="">
+                                    <a class="action-icon" id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl1_EditBtn" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$ctl00$UHINTContent$UHINTContent$ListView1$ctrl1$EditBtn", "", true, "", "", false, true))'>
+                                        <i class="fa fa-2x fa-edit" aria-hidden="true"></i>
+                                    </a>
+                                    <a class="action-icon" id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl1_DeleteBtn" onclick="return confirm('Delete this entry from Medical History?');" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$ctl00$UHINTContent$UHINTContent$ListView1$ctrl1$DeleteBtn", "", true, "", "", false, true))'>
+                                        <i class="fa fa-2x fa-times" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        
+		
+                            <tr>
+                                <td data-label="Name">
+                                    <span id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl2_ailment_nameLabel">whiteness</span>
+                                </td>
+                                <td data-label="Nickname">
+                                    <span id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl2_ailment_nicknameLabel">whiteywww</span>
+                                </td>
+                                <td data-label="Start Date">
+                                    <span id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl2_start_dateLabel">04/14/2018</span>
+                                </td>
+                                <td data-label="End Date">
+                                    <span id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl2_end_dateLabel"></span>
+                                <div style="height:16px;"></div></td>
+                                <td data-label="">
+                                    <a class="action-icon" id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl2_EditBtn" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$ctl00$UHINTContent$UHINTContent$ListView1$ctrl2$EditBtn", "", true, "", "", false, true))'>
+                                        <i class="fa fa-2x fa-edit" aria-hidden="true"></i>
+                                    </a>
+                                    <a class="action-icon" id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl2_DeleteBtn" onclick="return confirm('Delete this entry from Medical History?');" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$ctl00$UHINTContent$UHINTContent$ListView1$ctrl2$DeleteBtn", "", true, "", "", false, true))'>
+                                        <i class="fa fa-2x fa-times" aria-hidden="true"></i>
+                                    </a>
+                                </td>     
+                            </tr>
+                        
+		
+                            <tr>
+                                <td data-label="Name">
+                                    <span id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl3_ailment_nameLabel">blackness</span>
+                                </td>
+                                <td data-label="Nickname">
+                                    <span id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl3_ailment_nicknameLabel">blackee</span>
+                                </td>
+                                <td data-label="Start Date">
+                                    <span id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl3_start_dateLabel">04/14/2018</span>
+                                </td>
+                                <td data-label="End Date">
+                                    <span id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl3_end_dateLabel"></span>
+                                <div style="height:16px;"></div></td>
+                                <td data-label="">
+                                    <a class="action-icon" id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl3_EditBtn" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$ctl00$UHINTContent$UHINTContent$ListView1$ctrl3$EditBtn", "", true, "", "", false, true))'>
+                                        <i class="fa fa-2x fa-edit" aria-hidden="true"></i>
+                                    </a>
+                                    <a class="action-icon" id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl3_DeleteBtn" onclick="return confirm('Delete this entry from Medical History?');" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$ctl00$UHINTContent$UHINTContent$ListView1$ctrl3$DeleteBtn", "", true, "", "", false, true))'>
+                                        <i class="fa fa-2x fa-times" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        
+		
+                            <tr>
+                                <td data-label="Name">
+                                    <span id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl4_ailment_nameLabel">graness</span>
+                                </td>
+                                <td data-label="Nickname">
+                                    <span id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl4_ailment_nicknameLabel">grayness</span>
+                                </td>
+                                <td data-label="Start Date">
+                                    <span id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl4_start_dateLabel"></span>
+                                <div style="height:16px;"></div></td>
+                                <td data-label="End Date">
+                                    <span id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl4_end_dateLabel"></span>
+                                <div style="height:16px;"></div></td>
+                                <td data-label="">
+                                    <a class="action-icon" id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl4_EditBtn" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$ctl00$UHINTContent$UHINTContent$ListView1$ctrl4$EditBtn", "", true, "", "", false, true))'>
+                                        <i class="fa fa-2x fa-edit" aria-hidden="true"></i>
+                                    </a>
+                                    <a class="action-icon" id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_ctrl4_DeleteBtn" onclick="return confirm('Delete this entry from Medical History?');" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$ctl00$UHINTContent$UHINTContent$ListView1$ctrl4$DeleteBtn", "", true, "", "", false, true))'>
+                                        <i class="fa fa-2x fa-times" aria-hidden="true"></i>
+                                    </a>
+                                </td>     
+                            </tr>
+                        <tr id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_Tr3">
+		<td id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_Td2" style="background-color: #e9f7f5" colspan="5">
+                                        <div id="NextLastBtns">
+                                            <span id="ctl00_ctl00_UHINTContent_UHINTContent_ListView1_DataPager1"><input name="ctl00$ctl00$UHINTContent$UHINTContent$ListView1$DataPager1$ctl00$ctl00" disabled="disabled" class="btn btn-default col-xs-3 col-xs-offset-2" type="submit" value="Previous">&nbsp;<input name="ctl00$ctl00$UHINTContent$UHINTContent$ListView1$DataPager1$ctl00$ctl01" class="btn btn-default col-xs-3 col-xs-offset-2" type="submit" value="Next">&nbsp;</span> 
+                                        </div>
+                                    </td>
+	</tr>
+</tbody></table>
+
+                               
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+	</div>

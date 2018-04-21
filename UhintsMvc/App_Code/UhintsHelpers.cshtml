@@ -1,0 +1,60 @@
+﻿@using UhintsMvc.Models
+@using System.Collections.Generic
+
+@helper EditableTable(UhintsMvc.Dynamic.TableDescriptor meta, List<MedicalHistory> records)
+    {
+        // your helper can contain code and/or markup, e.g.
+        // var msg = "Hello " + name;
+        // <p>@msg</p>
+        // For more information, visit https://go.microsoft.com/fwlink/?LinkID=204658
+
+        <table class="table uhintTable" id="">
+            <thead class="table-header-hints">
+                <tr style="background-color: #e9f7f5">
+
+                    @foreach(var f in meta.Fields)
+                    {
+                        var hidden = f.IsVisible ? "" : "hidden";
+
+                        <th id="@f.Name" scope="col" @hidden>
+                            @f.Label
+                        </th>
+                    }
+
+                </tr>
+            </thead>  
+            <tbody>
+              @foreach(var r in records)
+              {
+                 <tr>
+                             <td data-label="Name">
+                                <span id="ailment_nameLabel">@r.Name</span>
+                            </td>
+                            <td data-label="Nickname">
+                                <span id="ailment_nicknameLabel">@r.Nickname</span>
+                            </td>
+                            <td data-label="Start Date">
+                                <span id="start_dateLabel">@r.StartDt</span>
+                            </td>
+                            <td data-label="End Date">
+                                <span id="end_dateLabel">@r.EndDt</span>
+                                <div style="height:16px;"></div>
+                            </td>
+                            <td data-label="">
+                                <a class="action-icon" id="" href=''>
+                                    <i class="fa fa-2x fa-edit" aria-hidden="true"></i>
+                                </a>
+                                <a class="action-icon" id="" onclick="return confirm('Delete this entry from Medical History?');" href=''>
+                                    <i class="fa fa-2x fa-times" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                   
+                 </tr>
+              }
+            </tbody>
+
+         </table>
+
+
+  
+ }

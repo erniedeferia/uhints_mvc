@@ -1,0 +1,658 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UnifiedhintsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Content">
+    <Key>
+      <PropertyRef Name="ContentId" />
+    </Key>
+    <Property Name="ContentId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RoleContentAccesses" Relationship="Self.FK_RoleContentAccess_Content" FromRole="Content" ToRole="RoleContentAccess" />
+  </EntityType>
+  <EntityType Name="File">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="directoryFileId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fileName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="folderId" Type="Int32" Nullable="false" />
+    <Property Name="userId" Type="Int64" Nullable="false" />
+    <Property Name="statusId" Type="Int32" Nullable="false" />
+    <Property Name="createdDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="FileStatu" Relationship="Self.fk_FileStatus_Files" FromRole="Files" ToRole="FileStatus" />
+    <NavigationProperty Name="Folder" Relationship="Self.fk_Folders_Files" FromRole="Files" ToRole="Folders" />
+    <NavigationProperty Name="tbl_Users" Relationship="Self.fk_Users_Files" FromRole="Files" ToRole="tbl_Users" />
+  </EntityType>
+  <EntityType Name="FileStatu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="statusName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Files" Relationship="Self.fk_FileStatus_Files" FromRole="FileStatus" ToRole="Files" />
+  </EntityType>
+  <EntityType Name="Folder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="folderName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="createdDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Files" Relationship="Self.fk_Folders_Files" FromRole="Folders" ToRole="Files" />
+  </EntityType>
+  <EntityType Name="Link">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int64" Nullable="false" />
+    <Property Name="Link1" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MessageSentByFax">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="Int64" Nullable="false" />
+    <Property Name="createdDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="messageId" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="messageStatus" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="recipientFaxNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PricingPlan">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PlanName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MonthlyPrice" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="AnnuallyPrice" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="PromotionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PromoBasePlanId" Type="Int32" />
+    <Property Name="PromoAvailabilityStartDate" Type="DateTime" Precision="0" />
+    <Property Name="PromoAvailabilityEndDate" Type="DateTime" Precision="0" />
+    <Property Name="PromoDurationAnnually" Type="Int32" />
+    <Property Name="PromoDurationMonthly" Type="Int32" />
+  </EntityType>
+  <EntityType Name="RoleContentAccess">
+    <Key>
+      <PropertyRef Name="RoleContentAccessId" />
+    </Key>
+    <Property Name="RoleContentAccessId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="ContentId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Content" Relationship="Self.FK_RoleContentAccess_Content" FromRole="RoleContentAccess" ToRole="Content" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_RoleContentAccess_Roles" FromRole="RoleContentAccess" ToRole="Roles" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RoleContentAccesses" Relationship="Self.FK_RoleContentAccess_Roles" FromRole="Roles" ToRole="RoleContentAccess" />
+    <NavigationProperty Name="tbl_Users" Relationship="Self.UserRoles" FromRole="Roles" ToRole="tbl_Users" />
+  </EntityType>
+  <EntityType Name="tbl_Ailment_CustSurgeries">
+    <Key>
+      <PropertyRef Name="ailment_custSurgery_id" />
+    </Key>
+    <Property Name="ailment_custSurgery_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ailment_id" Type="Int64" />
+    <Property Name="cust_surgery_id" Type="Int64" />
+    <Property Name="entry_date" Type="DateTime" Precision="3" />
+    <Property Name="change_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_Ailments">
+    <Key>
+      <PropertyRef Name="ailment_id" />
+    </Key>
+    <Property Name="ailment_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ailment_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="entry_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="change_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_Assets">
+    <Key>
+      <PropertyRef Name="Asset_Id" />
+    </Key>
+    <Property Name="Asset_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AssetName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tbl_Roles" Relationship="Self.tbl_Role_Asset_Permissions" FromRole="tbl_Assets" ToRole="tbl_Roles" />
+  </EntityType>
+  <EntityType Name="tbl_Customer_Ailment">
+    <Key>
+      <PropertyRef Name="cust_ailment_id" />
+    </Key>
+    <Property Name="cust_ailment_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customer_id" Type="Int64" Nullable="false" />
+    <Property Name="ailment_id" Type="Int64" Nullable="false" />
+    <Property Name="entry_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="change_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="start_date" Type="DateTime" Precision="3" />
+    <Property Name="end_date" Type="DateTime" Precision="3" />
+    <Property Name="ailment_nickname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="new_value" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_Customer_Allergies">
+    <Key>
+      <PropertyRef Name="allergy_id" />
+    </Key>
+    <Property Name="allergy_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customer_id" Type="Int64" Nullable="false" />
+    <Property Name="allergy_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="allergy_desc" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="entry_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="change_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_Customer_Medications">
+    <Key>
+      <PropertyRef Name="medication_id" />
+    </Key>
+    <Property Name="medication_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customer_id" Type="Int64" Nullable="false" />
+    <Property Name="provider_id" Type="Int64" />
+    <Property Name="medication_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="medication_desc" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="medication_dose" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="medication_route" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="medication_frequency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="start_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="end_date" Type="DateTime" Precision="3" />
+    <Property Name="entry_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="change_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FIXEDOTC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="OTC" Type="Boolean" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="tbl_Customer_Providers">
+    <Key>
+      <PropertyRef Name="provider_id" />
+    </Key>
+    <Property Name="provider_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customer_id" Type="Int64" Nullable="false" />
+    <Property Name="provider_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="address1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="address2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="specialty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="first" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="last" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="zip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="website" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="comments" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="entry_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="change_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_Customer_Schedule">
+    <Key>
+      <PropertyRef Name="schedule_id" />
+    </Key>
+    <Property Name="schedule_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customer_id" Type="Int64" Nullable="false" />
+    <Property Name="provider_id" Type="Int64" />
+    <Property Name="entry_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="change_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="start_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="end_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="event_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="reason" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="allday" Type="Int32" />
+    <Property Name="columnnew" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_Customer_Surgery">
+    <Key>
+      <PropertyRef Name="cust_surgery_id" />
+    </Key>
+    <Property Name="cust_surgery_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customer_id" Type="Int64" Nullable="false" />
+    <Property Name="surgery_id" Type="Int64" Nullable="false" />
+    <Property Name="entry_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="change_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="start_date" Type="DateTime" Precision="3" />
+    <Property Name="end_date" Type="DateTime" Precision="3" />
+    <Property Name="surgery_desc" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_Customers">
+    <Key>
+      <PropertyRef Name="Customer_Id" />
+    </Key>
+    <Property Name="Customer_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_Id" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateofBirth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="SocialSecurityNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Race" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ethnicity" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LanguageKnown" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="PrimaryAddress" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="State_Id" Type="Int32" />
+    <Property Name="StateName" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="Zipcode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="HomePhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CellPhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="WorkPhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MaritalStatus" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CitizenshipStatus" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbl_States" Relationship="Self.FK_tbl_Customers_tbl_States" FromRole="tbl_Customers" ToRole="tbl_States" />
+  </EntityType>
+  <EntityType Name="tbl_CustomerStatus">
+    <Key>
+      <PropertyRef Name="CustomerStatus_Id" />
+    </Key>
+    <Property Name="CustomerStatus_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Customer_Id" Type="Int32" />
+    <Property Name="User_Id" Type="Int32" />
+    <Property Name="EmergencyContact_Id" Type="Int32" />
+    <Property Name="EmployerInfo_Id" Type="Int32" />
+    <Property Name="InsuranceInfo_Id" Type="Int32" />
+    <Property Name="UpdateTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_DocumentationInfo">
+    <Key>
+      <PropertyRef Name="DocumentationInfo_Id" />
+    </Key>
+    <Property Name="DocumentationInfo_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Customer_Id" Type="Int32" Nullable="false" />
+    <Property Name="DocumentType" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DocumentStatus" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ReceivedBy" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="DocumentNo" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbl_EmergencyContacts">
+    <Key>
+      <PropertyRef Name="EmergencyContact_Id" />
+    </Key>
+    <Property Name="EmergencyContact_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Customer_Id" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RelationshiptoPatient" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ContactAddress" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="State_Id" Type="Int32" />
+    <Property Name="StateName" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="Zipcode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="IsSameAsPatientsAddress" Type="Boolean" />
+    <Property Name="HomePhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CellPhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="WorkPhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="IsALegalGuardian" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_EmployerInfo">
+    <Key>
+      <PropertyRef Name="EmployerInfo_Id" />
+    </Key>
+    <Property Name="EmployerInfo_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployerName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmploymentStatus" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Customer_Id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_InsuranceInfo">
+    <Key>
+      <PropertyRef Name="InsuranceInfo_Id" />
+    </Key>
+    <Property Name="InsuranceInfo_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Customer_Id" Type="Int32" Nullable="false" />
+    <Property Name="PaymentType" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PolicyNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="PlanType" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="AuthorizationNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="SubscriberAddress" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="State_Id" Type="Int32" />
+    <Property Name="StateName" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="Zipcode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="InsuranceVerificationType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="RelationshiptoPatient" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_Roles">
+    <Key>
+      <PropertyRef Name="Role_Id" />
+    </Key>
+    <Property Name="Role_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tbl_Assets" Relationship="Self.tbl_Role_Asset_Permissions" FromRole="tbl_Roles" ToRole="tbl_Assets" />
+  </EntityType>
+  <EntityType Name="tbl_States">
+    <Key>
+      <PropertyRef Name="State_Id" />
+    </Key>
+    <Property Name="State_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StateAbbreviation" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tbl_Customers" Relationship="Self.FK_tbl_Customers_tbl_States" FromRole="tbl_States" ToRole="tbl_Customers" />
+  </EntityType>
+  <EntityType Name="tbl_Surgeries">
+    <Key>
+      <PropertyRef Name="surgery_id" />
+    </Key>
+    <Property Name="surgery_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="surgery_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="entry_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="change_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_Surgery_CustAilments">
+    <Key>
+      <PropertyRef Name="surgery_custAilment_id" />
+    </Key>
+    <Property Name="surgery_custAilment_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="surgery_id" Type="Int64" />
+    <Property Name="cust_ailment_id" Type="Int64" />
+    <Property Name="entry_date" Type="DateTime" Precision="3" />
+    <Property Name="change_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_UserLoginInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int64" Nullable="false" />
+    <Property Name="LoginDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IpAddress" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_Users">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DateofBirth" Type="DateTime" Precision="0" />
+    <Property Name="Password" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Organization" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PrimaryAddress" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="State_Id" Type="Int32" />
+    <Property Name="Zipcode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="HomePhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Role_Id" Type="Int32" />
+    <Property Name="validation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="user_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SocialSecurityNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Race" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ethnicity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LanguageKnown" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CellPhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="WorkPhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MaritalStatus" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CitizenshipStatus" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_Id" Type="Int32" />
+    <Property Name="StateName" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="Plan_Id" Type="Int32" />
+    <Property Name="MembershipBillingCycle" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MembershipDueDate" Type="DateTime" Precision="3" />
+    <Property Name="ANetSubscriptionId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ANetCustomerProfileId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ANetCustomerPaymentProfileId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Files" Relationship="Self.fk_Users_Files" FromRole="tbl_Users" ToRole="Files" />
+    <NavigationProperty Name="UserLogins" Relationship="Self.FK_UserLogin_ToTable" FromRole="tbl_Users" ToRole="UserLogin" />
+    <NavigationProperty Name="Roles" Relationship="Self.UserRoles" FromRole="tbl_Users" ToRole="Roles" />
+  </EntityType>
+  <EntityType Name="tbl_UsersHealthRecordsAccess">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="createdDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="accessToken" Type="Int32" Nullable="false" />
+    <Property Name="phraseKey" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="notifyingEmail" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="notifyingPerson" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="UserLogin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int64" Nullable="false" />
+    <Property Name="FailedAttemptCount" Type="Int32" Nullable="false" />
+    <Property Name="LockedEndDtUTC" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tbl_Users" Relationship="Self.FK_UserLogin_ToTable" FromRole="UserLogin" ToRole="tbl_Users" />
+  </EntityType>
+  <EntityType Name="tbl_Users_Customers">
+    <Key>
+      <PropertyRef Name="User_Id" />
+      <PropertyRef Name="Customer_Id" />
+    </Key>
+    <Property Name="User_Id" Type="Int32" Nullable="false" />
+    <Property Name="Customer_Id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="view_Ailments">
+    <Key>
+      <PropertyRef Name="ailment_id" />
+      <PropertyRef Name="ailment_name" />
+    </Key>
+    <Property Name="ailment_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ailment_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="view_Customer_Ailments">
+    <Key>
+      <PropertyRef Name="ailment_id" />
+      <PropertyRef Name="ailment_name" />
+      <PropertyRef Name="cust_ailment_id" />
+      <PropertyRef Name="customer_id" />
+      <PropertyRef Name="Expr1" />
+    </Key>
+    <Property Name="ailment_id" Type="Int64" Nullable="false" />
+    <Property Name="ailment_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cust_ailment_id" Type="Int64" Nullable="false" />
+    <Property Name="customer_id" Type="Int64" Nullable="false" />
+    <Property Name="Expr1" Type="Int64" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="view_Customer_Surgeries">
+    <Key>
+      <PropertyRef Name="start_date" />
+      <PropertyRef Name="surgery_name" />
+      <PropertyRef Name="surgery_id" />
+      <PropertyRef Name="user_id" />
+      <PropertyRef Name="customer_id" />
+    </Key>
+    <Property Name="end_date" Type="DateTime" Precision="3" />
+    <Property Name="start_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="surgery_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="surgery_id" Type="Int64" Nullable="false" />
+    <Property Name="surgery_desc" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="user_id" Type="Int64" Nullable="false" />
+    <Property Name="customer_id" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="view_Surgeries">
+    <Key>
+      <PropertyRef Name="surgery_id" />
+      <PropertyRef Name="surgery_name" />
+    </Key>
+    <Property Name="surgery_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="surgery_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_RoleContentAccess_Content">
+    <End Role="Content" Type="Self.Content" Multiplicity="1" />
+    <End Role="RoleContentAccess" Type="Self.RoleContentAccess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Content">
+        <PropertyRef Name="ContentId" />
+      </Principal>
+      <Dependent Role="RoleContentAccess">
+        <PropertyRef Name="ContentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_FileStatus_Files">
+    <End Role="FileStatus" Type="Self.FileStatu" Multiplicity="1" />
+    <End Role="Files" Type="Self.File" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FileStatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Files">
+        <PropertyRef Name="statusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Folders_Files">
+    <End Role="Folders" Type="Self.Folder" Multiplicity="1" />
+    <End Role="Files" Type="Self.File" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Folders">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Files">
+        <PropertyRef Name="folderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Users_Files">
+    <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+    <End Role="Files" Type="Self.File" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Users">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="Files">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleContentAccess_Roles">
+    <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+    <End Role="RoleContentAccess" Type="Self.RoleContentAccess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="RoleContentAccess">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Customers_tbl_States">
+    <End Role="tbl_States" Type="Self.tbl_States" Multiplicity="0..1" />
+    <End Role="tbl_Customers" Type="Self.tbl_Customers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_States">
+        <PropertyRef Name="State_Id" />
+      </Principal>
+      <Dependent Role="tbl_Customers">
+        <PropertyRef Name="State_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserLogin_ToTable">
+    <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Users">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="UserLogin">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserRoles">
+    <End Role="Roles" Type="Self.Role" Multiplicity="*" />
+    <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="*" />
+  </Association>
+  <Association Name="tbl_Role_Asset_Permissions">
+    <End Role="tbl_Assets" Type="Self.tbl_Assets" Multiplicity="*" />
+    <End Role="tbl_Roles" Type="Self.tbl_Roles" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="UnifiedhintsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Contents" EntityType="Self.Content" />
+    <EntitySet Name="Files" EntityType="Self.File" />
+    <EntitySet Name="FileStatus" EntityType="Self.FileStatu" />
+    <EntitySet Name="Folders" EntityType="Self.Folder" />
+    <EntitySet Name="Links" EntityType="Self.Link" />
+    <EntitySet Name="MessageSentByFaxes" EntityType="Self.MessageSentByFax" />
+    <EntitySet Name="PricingPlans" EntityType="Self.PricingPlan" />
+    <EntitySet Name="RoleContentAccesses" EntityType="Self.RoleContentAccess" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="tbl_Ailment_CustSurgeries" EntityType="Self.tbl_Ailment_CustSurgeries" />
+    <EntitySet Name="tbl_Ailments" EntityType="Self.tbl_Ailments" />
+    <EntitySet Name="tbl_Assets" EntityType="Self.tbl_Assets" />
+    <EntitySet Name="tbl_Customer_Ailment" EntityType="Self.tbl_Customer_Ailment" />
+    <EntitySet Name="tbl_Customer_Allergies" EntityType="Self.tbl_Customer_Allergies" />
+    <EntitySet Name="tbl_Customer_Medications" EntityType="Self.tbl_Customer_Medications" />
+    <EntitySet Name="tbl_Customer_Providers" EntityType="Self.tbl_Customer_Providers" />
+    <EntitySet Name="tbl_Customer_Schedule" EntityType="Self.tbl_Customer_Schedule" />
+    <EntitySet Name="tbl_Customer_Surgery" EntityType="Self.tbl_Customer_Surgery" />
+    <EntitySet Name="tbl_Customers" EntityType="Self.tbl_Customers" />
+    <EntitySet Name="tbl_CustomerStatus" EntityType="Self.tbl_CustomerStatus" />
+    <EntitySet Name="tbl_DocumentationInfo" EntityType="Self.tbl_DocumentationInfo" />
+    <EntitySet Name="tbl_EmergencyContacts" EntityType="Self.tbl_EmergencyContacts" />
+    <EntitySet Name="tbl_EmployerInfo" EntityType="Self.tbl_EmployerInfo" />
+    <EntitySet Name="tbl_InsuranceInfo" EntityType="Self.tbl_InsuranceInfo" />
+    <EntitySet Name="tbl_Roles" EntityType="Self.tbl_Roles" />
+    <EntitySet Name="tbl_States" EntityType="Self.tbl_States" />
+    <EntitySet Name="tbl_Surgeries" EntityType="Self.tbl_Surgeries" />
+    <EntitySet Name="tbl_Surgery_CustAilments" EntityType="Self.tbl_Surgery_CustAilments" />
+    <EntitySet Name="tbl_UserLoginInfo" EntityType="Self.tbl_UserLoginInfo" />
+    <EntitySet Name="tbl_Users" EntityType="Self.tbl_Users" />
+    <EntitySet Name="tbl_UsersHealthRecordsAccess" EntityType="Self.tbl_UsersHealthRecordsAccess" />
+    <EntitySet Name="UserLogins" EntityType="Self.UserLogin" />
+    <EntitySet Name="tbl_Users_Customers" EntityType="Self.tbl_Users_Customers" />
+    <EntitySet Name="view_Ailments" EntityType="Self.view_Ailments" />
+    <EntitySet Name="view_Customer_Ailments" EntityType="Self.view_Customer_Ailments" />
+    <EntitySet Name="view_Customer_Surgeries" EntityType="Self.view_Customer_Surgeries" />
+    <EntitySet Name="view_Surgeries" EntityType="Self.view_Surgeries" />
+    <AssociationSet Name="FK_RoleContentAccess_Content" Association="Self.FK_RoleContentAccess_Content">
+      <End Role="Content" EntitySet="Contents" />
+      <End Role="RoleContentAccess" EntitySet="RoleContentAccesses" />
+    </AssociationSet>
+    <AssociationSet Name="fk_FileStatus_Files" Association="Self.fk_FileStatus_Files">
+      <End Role="FileStatus" EntitySet="FileStatus" />
+      <End Role="Files" EntitySet="Files" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Folders_Files" Association="Self.fk_Folders_Files">
+      <End Role="Folders" EntitySet="Folders" />
+      <End Role="Files" EntitySet="Files" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Users_Files" Association="Self.fk_Users_Files">
+      <End Role="tbl_Users" EntitySet="tbl_Users" />
+      <End Role="Files" EntitySet="Files" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleContentAccess_Roles" Association="Self.FK_RoleContentAccess_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="RoleContentAccess" EntitySet="RoleContentAccesses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Customers_tbl_States" Association="Self.FK_tbl_Customers_tbl_States">
+      <End Role="tbl_States" EntitySet="tbl_States" />
+      <End Role="tbl_Customers" EntitySet="tbl_Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserLogin_ToTable" Association="Self.FK_UserLogin_ToTable">
+      <End Role="tbl_Users" EntitySet="tbl_Users" />
+      <End Role="UserLogin" EntitySet="UserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="UserRoles" Association="Self.UserRoles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="tbl_Users" EntitySet="tbl_Users" />
+    </AssociationSet>
+    <AssociationSet Name="tbl_Role_Asset_Permissions" Association="Self.tbl_Role_Asset_Permissions">
+      <End Role="tbl_Assets" EntitySet="tbl_Assets" />
+      <End Role="tbl_Roles" EntitySet="tbl_Roles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

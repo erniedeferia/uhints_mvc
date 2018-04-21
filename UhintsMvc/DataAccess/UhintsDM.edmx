@@ -1,0 +1,1970 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="UnifiedhintsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="ContentId" />
+          </Key>
+          <Property Name="ContentId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="Files">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="directoryFileId" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="fileName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="folderId" Type="int" Nullable="false" />
+          <Property Name="userId" Type="bigint" Nullable="false" />
+          <Property Name="statusId" Type="int" Nullable="false" />
+          <Property Name="createdDate" Type="datetime" Nullable="false" />
+          <Property Name="modifiedDate" Type="datetime" />
+          <Property Name="description" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="FileStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="statusName" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Folders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="folderName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="createdDate" Type="datetime" Nullable="false" />
+          <Property Name="modifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Links">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="bigint" Nullable="false" />
+          <Property Name="Link" Type="varchar" MaxLength="512" />
+          <Property Name="Remarks" Type="varchar" MaxLength="1024" />
+        </EntityType>
+        <EntityType Name="MessageSentByFax">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="bigint" Nullable="false" />
+          <Property Name="createdDate" Type="datetime" Nullable="false" />
+          <Property Name="messageId" Type="varchar" MaxLength="80" />
+          <Property Name="messageStatus" Type="varchar" MaxLength="80" />
+          <Property Name="recipientFaxNumber" Type="varchar" MaxLength="13" />
+        </EntityType>
+        <EntityType Name="PricingPlan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlanName" Type="varchar" MaxLength="100" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="MonthlyPrice" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="AnnuallyPrice" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="PromotionCode" Type="varchar" MaxLength="50" />
+          <Property Name="PromoBasePlanId" Type="int" />
+          <Property Name="PromoAvailabilityStartDate" Type="date" />
+          <Property Name="PromoAvailabilityEndDate" Type="date" />
+          <Property Name="PromoDurationAnnually" Type="int" />
+          <Property Name="PromoDurationMonthly" Type="int" />
+        </EntityType>
+        <EntityType Name="RoleContentAccess">
+          <Key>
+            <PropertyRef Name="RoleContentAccessId" />
+          </Key>
+          <Property Name="RoleContentAccessId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="ContentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="tbl_Ailment_CustSurgeries">
+          <Key>
+            <PropertyRef Name="ailment_custSurgery_id" />
+          </Key>
+          <Property Name="ailment_custSurgery_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ailment_id" Type="bigint" />
+          <Property Name="cust_surgery_id" Type="bigint" />
+          <Property Name="entry_date" Type="datetime" />
+          <Property Name="change_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_Ailments">
+          <Key>
+            <PropertyRef Name="ailment_id" />
+          </Key>
+          <Property Name="ailment_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ailment_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="entry_date" Type="datetime" Nullable="false" />
+          <Property Name="change_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Assets">
+          <Key>
+            <PropertyRef Name="Asset_Id" />
+          </Key>
+          <Property Name="Asset_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Customer_Ailment">
+          <Key>
+            <PropertyRef Name="cust_ailment_id" />
+          </Key>
+          <Property Name="cust_ailment_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_id" Type="bigint" Nullable="false" />
+          <Property Name="ailment_id" Type="bigint" Nullable="false" />
+          <Property Name="entry_date" Type="datetime" Nullable="false" />
+          <Property Name="change_date" Type="datetime" Nullable="false" />
+          <Property Name="start_date" Type="datetime" />
+          <Property Name="end_date" Type="datetime" />
+          <Property Name="ailment_nickname" Type="varchar" MaxLength="100" />
+          <Property Name="new_value" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbl_Customer_Allergies">
+          <Key>
+            <PropertyRef Name="allergy_id" />
+          </Key>
+          <Property Name="allergy_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_id" Type="bigint" Nullable="false" />
+          <Property Name="allergy_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="allergy_desc" Type="varchar" MaxLength="200" />
+          <Property Name="entry_date" Type="datetime" Nullable="false" />
+          <Property Name="change_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Customer_Medications">
+          <Key>
+            <PropertyRef Name="medication_id" />
+          </Key>
+          <Property Name="medication_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_id" Type="bigint" Nullable="false" />
+          <Property Name="provider_id" Type="bigint" />
+          <Property Name="medication_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="medication_desc" Type="varchar" MaxLength="200" />
+          <Property Name="medication_dose" Type="varchar" MaxLength="50" />
+          <Property Name="medication_route" Type="varchar" MaxLength="50" />
+          <Property Name="medication_frequency" Type="varchar" MaxLength="50" />
+          <Property Name="start_date" Type="datetime" Nullable="false" />
+          <Property Name="end_date" Type="datetime" />
+          <Property Name="entry_date" Type="datetime" Nullable="false" />
+          <Property Name="change_date" Type="datetime" Nullable="false" />
+          <Property Name="FIXEDOTC" Type="int" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="OTC" Type="bit" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tbl_Customer_Providers">
+          <Key>
+            <PropertyRef Name="provider_id" />
+          </Key>
+          <Property Name="provider_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_id" Type="bigint" Nullable="false" />
+          <Property Name="provider_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="address1" Type="varchar" MaxLength="100" />
+          <Property Name="address2" Type="varchar" MaxLength="100" />
+          <Property Name="city" Type="varchar" MaxLength="50" />
+          <Property Name="state" Type="varchar" MaxLength="50" />
+          <Property Name="specialty" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="50" />
+          <Property Name="first" Type="varchar" MaxLength="50" />
+          <Property Name="last" Type="varchar" MaxLength="50" />
+          <Property Name="zip" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="150" />
+          <Property Name="website" Type="varchar" MaxLength="150" />
+          <Property Name="comments" Type="varchar" MaxLength="500" />
+          <Property Name="entry_date" Type="datetime" Nullable="false" />
+          <Property Name="change_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Customer_Schedule">
+          <Key>
+            <PropertyRef Name="schedule_id" />
+          </Key>
+          <Property Name="schedule_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_id" Type="bigint" Nullable="false" />
+          <Property Name="provider_id" Type="bigint" />
+          <Property Name="entry_date" Type="datetime" Nullable="false" />
+          <Property Name="change_date" Type="datetime" Nullable="false" />
+          <Property Name="start_date" Type="datetime" Nullable="false" />
+          <Property Name="end_date" Type="datetime" Nullable="false" />
+          <Property Name="event_name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="reason" Type="varchar" MaxLength="150" />
+          <Property Name="allday" Type="int" />
+          <Property Name="columnnew" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Customer_Surgery">
+          <Key>
+            <PropertyRef Name="cust_surgery_id" />
+          </Key>
+          <Property Name="cust_surgery_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_id" Type="bigint" Nullable="false" />
+          <Property Name="surgery_id" Type="bigint" Nullable="false" />
+          <Property Name="entry_date" Type="datetime" Nullable="false" />
+          <Property Name="change_date" Type="datetime" Nullable="false" />
+          <Property Name="start_date" Type="datetime" />
+          <Property Name="end_date" Type="datetime" />
+          <Property Name="surgery_desc" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="tbl_Customers">
+          <Key>
+            <PropertyRef Name="Customer_Id" />
+          </Key>
+          <Property Name="Customer_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Id" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="25" />
+          <Property Name="LastName" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="DateofBirth" Type="date" Nullable="false" />
+          <Property Name="SocialSecurityNo" Type="varchar" MaxLength="10" />
+          <Property Name="Gender" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Race" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Ethnicity" Type="varchar" MaxLength="25" />
+          <Property Name="LanguageKnown" Type="varchar" MaxLength="25" />
+          <Property Name="PrimaryAddress" Type="varchar" MaxLength="75" />
+          <Property Name="City" Type="varchar" MaxLength="25" />
+          <Property Name="State_Id" Type="int" />
+          <Property Name="StateName" Type="char" MaxLength="2" />
+          <Property Name="Zipcode" Type="varchar" MaxLength="5" />
+          <Property Name="HomePhoneNumber" Type="varchar" MaxLength="10" />
+          <Property Name="CellPhoneNumber" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="WorkPhoneNumber" Type="varchar" MaxLength="10" />
+          <Property Name="EmailId" Type="varchar" MaxLength="50" />
+          <Property Name="MaritalStatus" Type="varchar" MaxLength="30" />
+          <Property Name="CitizenshipStatus" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="tbl_CustomerStatus">
+          <Key>
+            <PropertyRef Name="CustomerStatus_Id" />
+          </Key>
+          <Property Name="CustomerStatus_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_Id" Type="int" />
+          <Property Name="User_Id" Type="int" />
+          <Property Name="EmergencyContact_Id" Type="int" />
+          <Property Name="EmployerInfo_Id" Type="int" />
+          <Property Name="InsuranceInfo_Id" Type="int" />
+          <Property Name="UpdateTimeStamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_DocumentationInfo">
+          <Key>
+            <PropertyRef Name="DocumentationInfo_Id" />
+          </Key>
+          <Property Name="DocumentationInfo_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_Id" Type="int" Nullable="false" />
+          <Property Name="DocumentType" Type="varchar" MaxLength="25" />
+          <Property Name="DocumentStatus" Type="varchar" MaxLength="25" />
+          <Property Name="ReceivedBy" Type="varchar" MaxLength="75" />
+          <Property Name="DocumentNo" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_EmergencyContacts">
+          <Key>
+            <PropertyRef Name="EmergencyContact_Id" />
+          </Key>
+          <Property Name="EmergencyContact_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_Id" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="25" />
+          <Property Name="LastName" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="RelationshiptoPatient" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactAddress" Type="varchar" MaxLength="75" />
+          <Property Name="City" Type="varchar" MaxLength="25" />
+          <Property Name="State_Id" Type="int" />
+          <Property Name="StateName" Type="char" MaxLength="2" />
+          <Property Name="Zipcode" Type="varchar" MaxLength="5" />
+          <Property Name="IsSameAsPatientsAddress" Type="bit" />
+          <Property Name="HomePhoneNumber" Type="varchar" MaxLength="10" />
+          <Property Name="CellPhoneNumber" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="WorkPhoneNumber" Type="varchar" MaxLength="10" />
+          <Property Name="IsALegalGuardian" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="tbl_EmployerInfo">
+          <Key>
+            <PropertyRef Name="EmployerInfo_Id" />
+          </Key>
+          <Property Name="EmployerInfo_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployerName" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="EmploymentStatus" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Customer_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_InsuranceInfo">
+          <Key>
+            <PropertyRef Name="InsuranceInfo_Id" />
+          </Key>
+          <Property Name="InsuranceInfo_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_Id" Type="int" Nullable="false" />
+          <Property Name="PaymentType" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="PolicyNumber" Type="varchar" MaxLength="25" />
+          <Property Name="PlanType" Type="varchar" MaxLength="25" />
+          <Property Name="AuthorizationNumber" Type="varchar" MaxLength="25" />
+          <Property Name="SubscriberAddress" Type="varchar" MaxLength="75" />
+          <Property Name="City" Type="varchar" MaxLength="25" />
+          <Property Name="State_Id" Type="int" />
+          <Property Name="StateName" Type="char" MaxLength="2" />
+          <Property Name="Zipcode" Type="varchar" MaxLength="5" />
+          <Property Name="InsuranceVerificationType" Type="varchar" MaxLength="30" />
+          <Property Name="RelationshiptoPatient" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Unifiedhints.dbo.tbl_Role_Asset_Permissions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_Role_Asset_Permissions">
+          <Key>
+            <PropertyRef Name="Role_Id" />
+            <PropertyRef Name="Asset_Id" />
+          </Key>
+          <Property Name="Role_Id" Type="int" Nullable="false" />
+          <Property Name="Asset_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Roles">
+          <Key>
+            <PropertyRef Name="Role_Id" />
+          </Key>
+          <Property Name="Role_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_States">
+          <Key>
+            <PropertyRef Name="State_Id" />
+          </Key>
+          <Property Name="State_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="StateAbbreviation" Type="char" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Surgeries">
+          <Key>
+            <PropertyRef Name="surgery_id" />
+          </Key>
+          <Property Name="surgery_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="surgery_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="entry_date" Type="datetime" Nullable="false" />
+          <Property Name="change_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Surgery_CustAilments">
+          <Key>
+            <PropertyRef Name="surgery_custAilment_id" />
+          </Key>
+          <Property Name="surgery_custAilment_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="surgery_id" Type="bigint" />
+          <Property Name="cust_ailment_id" Type="bigint" />
+          <Property Name="entry_date" Type="datetime" />
+          <Property Name="change_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_UserLoginInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="LoginDateTime" Type="datetime" Nullable="false" />
+          <Property Name="IpAddress" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="tbl_Users">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="Username" Type="varchar" MaxLength="25" />
+          <Property Name="FirstName" Type="varchar" MaxLength="25" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="25" />
+          <Property Name="LastName" Type="varchar" MaxLength="25" />
+          <Property Name="DateofBirth" Type="date" />
+          <Property Name="Password" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Organization" Type="varchar" MaxLength="50" />
+          <Property Name="PrimaryAddress" Type="varchar" MaxLength="75" />
+          <Property Name="City" Type="varchar" MaxLength="25" />
+          <Property Name="State_Id" Type="int" />
+          <Property Name="Zipcode" Type="varchar" MaxLength="5" />
+          <Property Name="HomePhoneNumber" Type="varchar" MaxLength="10" />
+          <Property Name="Status" Type="char" MaxLength="1" />
+          <Property Name="Role_Id" Type="int" />
+          <Property Name="validation" Type="varchar" MaxLength="100" />
+          <Property Name="user_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SocialSecurityNo" Type="varchar" MaxLength="10" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" />
+          <Property Name="Race" Type="varchar" MaxLength="50" />
+          <Property Name="Ethnicity" Type="varchar" MaxLength="50" />
+          <Property Name="LanguageKnown" Type="varchar" MaxLength="50" />
+          <Property Name="CellPhoneNumber" Type="varchar" MaxLength="10" />
+          <Property Name="WorkPhoneNumber" Type="varchar" MaxLength="10" />
+          <Property Name="MaritalStatus" Type="varchar" MaxLength="30" />
+          <Property Name="CitizenshipStatus" Type="varchar" MaxLength="30" />
+          <Property Name="Customer_Id" Type="int" />
+          <Property Name="StateName" Type="varchar" MaxLength="2" />
+          <Property Name="Plan_Id" Type="int" />
+          <Property Name="MembershipBillingCycle" Type="varchar" MaxLength="10" />
+          <Property Name="MembershipDueDate" Type="datetime" />
+          <Property Name="ANetSubscriptionId" Type="varchar" MaxLength="20" />
+          <Property Name="ANetCustomerProfileId" Type="varchar" MaxLength="20" />
+          <Property Name="ANetCustomerPaymentProfileId" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Unifiedhints.dbo.tbl_Users_Customers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_Users_Customers">
+          <Key>
+            <PropertyRef Name="User_Id" />
+            <PropertyRef Name="Customer_Id" />
+          </Key>
+          <Property Name="User_Id" Type="int" Nullable="false" />
+          <Property Name="Customer_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_UsersHealthRecordsAccess">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="int" Nullable="false" />
+          <Property Name="createdDate" Type="datetime" Nullable="false" />
+          <Property Name="accessToken" Type="int" Nullable="false" />
+          <Property Name="phraseKey" Type="varchar" MaxLength="40" />
+          <Property Name="notifyingEmail" Type="varchar" MaxLength="80" />
+          <Property Name="notifyingPerson" Type="varchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="bigint" Nullable="false" />
+          <Property Name="FailedAttemptCount" Type="int" Nullable="false" />
+          <Property Name="LockedEndDtUTC" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Unifiedhints.dbo.view_Ailments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="view_Ailments">
+          <Key>
+            <PropertyRef Name="ailment_id" />
+            <PropertyRef Name="ailment_name" />
+          </Key>
+          <Property Name="ailment_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ailment_name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Unifiedhints.dbo.view_Customer_Ailments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="view_Customer_Ailments">
+          <Key>
+            <PropertyRef Name="ailment_id" />
+            <PropertyRef Name="ailment_name" />
+            <PropertyRef Name="cust_ailment_id" />
+            <PropertyRef Name="customer_id" />
+            <PropertyRef Name="Expr1" />
+          </Key>
+          <Property Name="ailment_id" Type="bigint" Nullable="false" />
+          <Property Name="ailment_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cust_ailment_id" Type="bigint" Nullable="false" />
+          <Property Name="customer_id" Type="bigint" Nullable="false" />
+          <Property Name="Expr1" Type="bigint" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="25" />
+          <Property Name="LastName" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Unifiedhints.dbo.view_Customer_Surgeries' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="view_Customer_Surgeries">
+          <Key>
+            <PropertyRef Name="start_date" />
+            <PropertyRef Name="surgery_name" />
+            <PropertyRef Name="surgery_id" />
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="end_date" Type="datetime" />
+          <Property Name="start_date" Type="datetime" Nullable="false" />
+          <Property Name="surgery_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="surgery_id" Type="bigint" Nullable="false" />
+          <Property Name="surgery_desc" Type="varchar" MaxLength="300" />
+          <Property Name="FirstName" Type="varchar" MaxLength="25" />
+          <Property Name="LastName" Type="varchar" MaxLength="25" />
+          <Property Name="user_id" Type="bigint" Nullable="false" />
+          <Property Name="customer_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Unifiedhints.dbo.view_Surgeries' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="view_Surgeries">
+          <Key>
+            <PropertyRef Name="surgery_id" />
+            <PropertyRef Name="surgery_name" />
+          </Key>
+          <Property Name="surgery_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="surgery_name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_FileStatus_Files">
+          <End Role="FileStatus" Type="Self.FileStatus" Multiplicity="1" />
+          <End Role="Files" Type="Self.Files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Files">
+              <PropertyRef Name="statusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Folders_Files">
+          <End Role="Folders" Type="Self.Folders" Multiplicity="1" />
+          <End Role="Files" Type="Self.Files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Folders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Files">
+              <PropertyRef Name="folderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleContentAccess_Content">
+          <End Role="Content" Type="Self.Content" Multiplicity="1" />
+          <End Role="RoleContentAccess" Type="Self.RoleContentAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Content">
+              <PropertyRef Name="ContentId" />
+            </Principal>
+            <Dependent Role="RoleContentAccess">
+              <PropertyRef Name="ContentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleContentAccess_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="RoleContentAccess" Type="Self.RoleContentAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="RoleContentAccess">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Customers_tbl_States">
+          <End Role="tbl_States" Type="Self.tbl_States" Multiplicity="0..1" />
+          <End Role="tbl_Customers" Type="Self.tbl_Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_States">
+              <PropertyRef Name="State_Id" />
+            </Principal>
+            <Dependent Role="tbl_Customers">
+              <PropertyRef Name="State_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Role_Asset_Permissions_tbl_Assets">
+          <End Role="tbl_Assets" Type="Self.tbl_Assets" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbl_Role_Asset_Permissions" Type="Self.tbl_Role_Asset_Permissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Assets">
+              <PropertyRef Name="Asset_Id" />
+            </Principal>
+            <Dependent Role="tbl_Role_Asset_Permissions">
+              <PropertyRef Name="Asset_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Role_Asset_Permissions_tbl_Roles">
+          <End Role="tbl_Roles" Type="Self.tbl_Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbl_Role_Asset_Permissions" Type="Self.tbl_Role_Asset_Permissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Roles">
+              <PropertyRef Name="Role_Id" />
+            </Principal>
+            <Dependent Role="tbl_Role_Asset_Permissions">
+              <PropertyRef Name="Role_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLogin_ToTable">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+          <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="UserLogin">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Users_Files">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+          <End Role="Files" Type="Self.Files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Files">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UnifiedhintsModelStoreContainer">
+          <EntitySet Name="Content" EntityType="Self.Content" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Files" EntityType="Self.Files" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FileStatus" EntityType="Self.FileStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Folders" EntityType="Self.Folders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Links" EntityType="Self.Links" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MessageSentByFax" EntityType="Self.MessageSentByFax" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PricingPlan" EntityType="Self.PricingPlan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleContentAccess" EntityType="Self.RoleContentAccess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Ailment_CustSurgeries" EntityType="Self.tbl_Ailment_CustSurgeries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Ailments" EntityType="Self.tbl_Ailments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Assets" EntityType="Self.tbl_Assets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Customer_Ailment" EntityType="Self.tbl_Customer_Ailment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Customer_Allergies" EntityType="Self.tbl_Customer_Allergies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Customer_Medications" EntityType="Self.tbl_Customer_Medications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Customer_Providers" EntityType="Self.tbl_Customer_Providers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Customer_Schedule" EntityType="Self.tbl_Customer_Schedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Customer_Surgery" EntityType="Self.tbl_Customer_Surgery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Customers" EntityType="Self.tbl_Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CustomerStatus" EntityType="Self.tbl_CustomerStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_DocumentationInfo" EntityType="Self.tbl_DocumentationInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_EmergencyContacts" EntityType="Self.tbl_EmergencyContacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_EmployerInfo" EntityType="Self.tbl_EmployerInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_InsuranceInfo" EntityType="Self.tbl_InsuranceInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Roles" EntityType="Self.tbl_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_States" EntityType="Self.tbl_States" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Surgeries" EntityType="Self.tbl_Surgeries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Surgery_CustAilments" EntityType="Self.tbl_Surgery_CustAilments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_UserLoginInfo" EntityType="Self.tbl_UserLoginInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Users" EntityType="Self.tbl_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_UsersHealthRecordsAccess" EntityType="Self.tbl_UsersHealthRecordsAccess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLogin" EntityType="Self.UserLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Role_Asset_Permissions" EntityType="Self.tbl_Role_Asset_Permissions" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_Role_Asset_Permissions].[Role_Id] AS [Role_Id], 
+    [tbl_Role_Asset_Permissions].[Asset_Id] AS [Asset_Id]
+    FROM [dbo].[tbl_Role_Asset_Permissions] AS [tbl_Role_Asset_Permissions]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_Users_Customers" EntityType="Self.tbl_Users_Customers" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_Users_Customers].[User_Id] AS [User_Id], 
+    [tbl_Users_Customers].[Customer_Id] AS [Customer_Id]
+    FROM [dbo].[tbl_Users_Customers] AS [tbl_Users_Customers]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="view_Ailments" EntityType="Self.view_Ailments" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [view_Ailments].[ailment_id] AS [ailment_id], 
+    [view_Ailments].[ailment_name] AS [ailment_name]
+    FROM [dbo].[view_Ailments] AS [view_Ailments]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="view_Customer_Ailments" EntityType="Self.view_Customer_Ailments" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [view_Customer_Ailments].[ailment_id] AS [ailment_id], 
+    [view_Customer_Ailments].[ailment_name] AS [ailment_name], 
+    [view_Customer_Ailments].[cust_ailment_id] AS [cust_ailment_id], 
+    [view_Customer_Ailments].[customer_id] AS [customer_id], 
+    [view_Customer_Ailments].[Expr1] AS [Expr1], 
+    [view_Customer_Ailments].[FirstName] AS [FirstName], 
+    [view_Customer_Ailments].[LastName] AS [LastName]
+    FROM [dbo].[view_Customer_Ailments] AS [view_Customer_Ailments]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="view_Customer_Surgeries" EntityType="Self.view_Customer_Surgeries" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [view_Customer_Surgeries].[end_date] AS [end_date], 
+    [view_Customer_Surgeries].[start_date] AS [start_date], 
+    [view_Customer_Surgeries].[surgery_name] AS [surgery_name], 
+    [view_Customer_Surgeries].[surgery_id] AS [surgery_id], 
+    [view_Customer_Surgeries].[surgery_desc] AS [surgery_desc], 
+    [view_Customer_Surgeries].[FirstName] AS [FirstName], 
+    [view_Customer_Surgeries].[LastName] AS [LastName], 
+    [view_Customer_Surgeries].[user_id] AS [user_id], 
+    [view_Customer_Surgeries].[customer_id] AS [customer_id]
+    FROM [dbo].[view_Customer_Surgeries] AS [view_Customer_Surgeries]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="view_Surgeries" EntityType="Self.view_Surgeries" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [view_Surgeries].[surgery_id] AS [surgery_id], 
+    [view_Surgeries].[surgery_name] AS [surgery_name]
+    FROM [dbo].[view_Surgeries] AS [view_Surgeries]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="fk_FileStatus_Files" Association="Self.fk_FileStatus_Files">
+            <End Role="FileStatus" EntitySet="FileStatus" />
+            <End Role="Files" EntitySet="Files" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Folders_Files" Association="Self.fk_Folders_Files">
+            <End Role="Folders" EntitySet="Folders" />
+            <End Role="Files" EntitySet="Files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleContentAccess_Content" Association="Self.FK_RoleContentAccess_Content">
+            <End Role="Content" EntitySet="Content" />
+            <End Role="RoleContentAccess" EntitySet="RoleContentAccess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleContentAccess_Roles" Association="Self.FK_RoleContentAccess_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RoleContentAccess" EntitySet="RoleContentAccess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Customers_tbl_States" Association="Self.FK_tbl_Customers_tbl_States">
+            <End Role="tbl_States" EntitySet="tbl_States" />
+            <End Role="tbl_Customers" EntitySet="tbl_Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Role_Asset_Permissions_tbl_Assets" Association="Self.FK_tbl_Role_Asset_Permissions_tbl_Assets">
+            <End Role="tbl_Assets" EntitySet="tbl_Assets" />
+            <End Role="tbl_Role_Asset_Permissions" EntitySet="tbl_Role_Asset_Permissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Role_Asset_Permissions_tbl_Roles" Association="Self.FK_tbl_Role_Asset_Permissions_tbl_Roles">
+            <End Role="tbl_Roles" EntitySet="tbl_Roles" />
+            <End Role="tbl_Role_Asset_Permissions" EntitySet="tbl_Role_Asset_Permissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLogin_ToTable" Association="Self.FK_UserLogin_ToTable">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="UserLogin" EntitySet="UserLogin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_Roles" Association="Self.FK_UserRoles_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_tbl_Users" Association="Self.FK_UserRoles_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Users_Files" Association="Self.fk_Users_Files">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="Files" EntitySet="Files" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UnifiedhintsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="ContentId" />
+          </Key>
+          <Property Name="ContentId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RoleContentAccesses" Relationship="Self.FK_RoleContentAccess_Content" FromRole="Content" ToRole="RoleContentAccess" />
+        </EntityType>
+        <EntityType Name="File">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="directoryFileId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fileName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="folderId" Type="Int32" Nullable="false" />
+          <Property Name="userId" Type="Int64" Nullable="false" />
+          <Property Name="statusId" Type="Int32" Nullable="false" />
+          <Property Name="createdDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FileStatu" Relationship="Self.fk_FileStatus_Files" FromRole="Files" ToRole="FileStatus" />
+          <NavigationProperty Name="Folder" Relationship="Self.fk_Folders_Files" FromRole="Files" ToRole="Folders" />
+          <NavigationProperty Name="tbl_Users" Relationship="Self.fk_Users_Files" FromRole="Files" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="FileStatu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="statusName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Files" Relationship="Self.fk_FileStatus_Files" FromRole="FileStatus" ToRole="Files" />
+        </EntityType>
+        <EntityType Name="Folder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="folderName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="createdDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Files" Relationship="Self.fk_Folders_Files" FromRole="Folders" ToRole="Files" />
+        </EntityType>
+        <EntityType Name="Link">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int64" Nullable="false" />
+          <Property Name="Link1" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MessageSentByFax">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int64" Nullable="false" />
+          <Property Name="createdDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="messageId" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="messageStatus" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="recipientFaxNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PricingPlan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlanName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MonthlyPrice" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="AnnuallyPrice" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="PromotionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PromoBasePlanId" Type="Int32" />
+          <Property Name="PromoAvailabilityStartDate" Type="DateTime" Precision="0" />
+          <Property Name="PromoAvailabilityEndDate" Type="DateTime" Precision="0" />
+          <Property Name="PromoDurationAnnually" Type="Int32" />
+          <Property Name="PromoDurationMonthly" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RoleContentAccess">
+          <Key>
+            <PropertyRef Name="RoleContentAccessId" />
+          </Key>
+          <Property Name="RoleContentAccessId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="ContentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Content" Relationship="Self.FK_RoleContentAccess_Content" FromRole="RoleContentAccess" ToRole="Content" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_RoleContentAccess_Roles" FromRole="RoleContentAccess" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RoleContentAccesses" Relationship="Self.FK_RoleContentAccess_Roles" FromRole="Roles" ToRole="RoleContentAccess" />
+          <NavigationProperty Name="tbl_Users" Relationship="Self.UserRoles" FromRole="Roles" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_Ailment_CustSurgeries">
+          <Key>
+            <PropertyRef Name="ailment_custSurgery_id" />
+          </Key>
+          <Property Name="ailment_custSurgery_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ailment_id" Type="Int64" />
+          <Property Name="cust_surgery_id" Type="Int64" />
+          <Property Name="entry_date" Type="DateTime" Precision="3" />
+          <Property Name="change_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_Ailments">
+          <Key>
+            <PropertyRef Name="ailment_id" />
+          </Key>
+          <Property Name="ailment_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ailment_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="entry_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="change_date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_Assets">
+          <Key>
+            <PropertyRef Name="Asset_Id" />
+          </Key>
+          <Property Name="Asset_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbl_Roles" Relationship="Self.tbl_Role_Asset_Permissions" FromRole="tbl_Assets" ToRole="tbl_Roles" />
+        </EntityType>
+        <EntityType Name="tbl_Customer_Ailment">
+          <Key>
+            <PropertyRef Name="cust_ailment_id" />
+          </Key>
+          <Property Name="cust_ailment_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_id" Type="Int64" Nullable="false" />
+          <Property Name="ailment_id" Type="Int64" Nullable="false" />
+          <Property Name="entry_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="change_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="start_date" Type="DateTime" Precision="3" />
+          <Property Name="end_date" Type="DateTime" Precision="3" />
+          <Property Name="ailment_nickname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="new_value" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_Customer_Allergies">
+          <Key>
+            <PropertyRef Name="allergy_id" />
+          </Key>
+          <Property Name="allergy_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_id" Type="Int64" Nullable="false" />
+          <Property Name="allergy_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="allergy_desc" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="entry_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="change_date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_Customer_Medications">
+          <Key>
+            <PropertyRef Name="medication_id" />
+          </Key>
+          <Property Name="medication_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_id" Type="Int64" Nullable="false" />
+          <Property Name="provider_id" Type="Int64" />
+          <Property Name="medication_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="medication_desc" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="medication_dose" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="medication_route" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="medication_frequency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="start_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="end_date" Type="DateTime" Precision="3" />
+          <Property Name="entry_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="change_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FIXEDOTC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="OTC" Type="Boolean" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tbl_Customer_Providers">
+          <Key>
+            <PropertyRef Name="provider_id" />
+          </Key>
+          <Property Name="provider_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_id" Type="Int64" Nullable="false" />
+          <Property Name="provider_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="address2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="specialty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="first" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="last" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="zip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="website" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="comments" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="entry_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="change_date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_Customer_Schedule">
+          <Key>
+            <PropertyRef Name="schedule_id" />
+          </Key>
+          <Property Name="schedule_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_id" Type="Int64" Nullable="false" />
+          <Property Name="provider_id" Type="Int64" />
+          <Property Name="entry_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="change_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="start_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="end_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="event_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="reason" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="allday" Type="Int32" />
+          <Property Name="columnnew" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_Customer_Surgery">
+          <Key>
+            <PropertyRef Name="cust_surgery_id" />
+          </Key>
+          <Property Name="cust_surgery_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_id" Type="Int64" Nullable="false" />
+          <Property Name="surgery_id" Type="Int64" Nullable="false" />
+          <Property Name="entry_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="change_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="start_date" Type="DateTime" Precision="3" />
+          <Property Name="end_date" Type="DateTime" Precision="3" />
+          <Property Name="surgery_desc" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_Customers">
+          <Key>
+            <PropertyRef Name="Customer_Id" />
+          </Key>
+          <Property Name="Customer_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Id" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateofBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SocialSecurityNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Race" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ethnicity" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="LanguageKnown" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="PrimaryAddress" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="State_Id" Type="Int32" />
+          <Property Name="StateName" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Zipcode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="HomePhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CellPhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WorkPhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MaritalStatus" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CitizenshipStatus" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_States" Relationship="Self.FK_tbl_Customers_tbl_States" FromRole="tbl_Customers" ToRole="tbl_States" />
+        </EntityType>
+        <EntityType Name="tbl_CustomerStatus">
+          <Key>
+            <PropertyRef Name="CustomerStatus_Id" />
+          </Key>
+          <Property Name="CustomerStatus_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_Id" Type="Int32" />
+          <Property Name="User_Id" Type="Int32" />
+          <Property Name="EmergencyContact_Id" Type="Int32" />
+          <Property Name="EmployerInfo_Id" Type="Int32" />
+          <Property Name="InsuranceInfo_Id" Type="Int32" />
+          <Property Name="UpdateTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_DocumentationInfo">
+          <Key>
+            <PropertyRef Name="DocumentationInfo_Id" />
+          </Key>
+          <Property Name="DocumentationInfo_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_Id" Type="Int32" Nullable="false" />
+          <Property Name="DocumentType" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentStatus" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ReceivedBy" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentNo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_EmergencyContacts">
+          <Key>
+            <PropertyRef Name="EmergencyContact_Id" />
+          </Key>
+          <Property Name="EmergencyContact_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_Id" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RelationshiptoPatient" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactAddress" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="State_Id" Type="Int32" />
+          <Property Name="StateName" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Zipcode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="IsSameAsPatientsAddress" Type="Boolean" />
+          <Property Name="HomePhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CellPhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WorkPhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IsALegalGuardian" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_EmployerInfo">
+          <Key>
+            <PropertyRef Name="EmployerInfo_Id" />
+          </Key>
+          <Property Name="EmployerInfo_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployerName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmploymentStatus" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Customer_Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_InsuranceInfo">
+          <Key>
+            <PropertyRef Name="InsuranceInfo_Id" />
+          </Key>
+          <Property Name="InsuranceInfo_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_Id" Type="Int32" Nullable="false" />
+          <Property Name="PaymentType" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PolicyNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="PlanType" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="AuthorizationNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="SubscriberAddress" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="State_Id" Type="Int32" />
+          <Property Name="StateName" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Zipcode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="InsuranceVerificationType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="RelationshiptoPatient" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_Roles">
+          <Key>
+            <PropertyRef Name="Role_Id" />
+          </Key>
+          <Property Name="Role_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbl_Assets" Relationship="Self.tbl_Role_Asset_Permissions" FromRole="tbl_Roles" ToRole="tbl_Assets" />
+        </EntityType>
+        <EntityType Name="tbl_States">
+          <Key>
+            <PropertyRef Name="State_Id" />
+          </Key>
+          <Property Name="State_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StateAbbreviation" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbl_Customers" Relationship="Self.FK_tbl_Customers_tbl_States" FromRole="tbl_States" ToRole="tbl_Customers" />
+        </EntityType>
+        <EntityType Name="tbl_Surgeries">
+          <Key>
+            <PropertyRef Name="surgery_id" />
+          </Key>
+          <Property Name="surgery_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="surgery_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="entry_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="change_date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_Surgery_CustAilments">
+          <Key>
+            <PropertyRef Name="surgery_custAilment_id" />
+          </Key>
+          <Property Name="surgery_custAilment_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="surgery_id" Type="Int64" />
+          <Property Name="cust_ailment_id" Type="Int64" />
+          <Property Name="entry_date" Type="DateTime" Precision="3" />
+          <Property Name="change_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_UserLoginInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="LoginDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IpAddress" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_Users">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="Username" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="DateofBirth" Type="DateTime" Precision="0" />
+          <Property Name="Password" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Organization" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PrimaryAddress" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="State_Id" Type="Int32" />
+          <Property Name="Zipcode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="HomePhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Role_Id" Type="Int32" />
+          <Property Name="validation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SocialSecurityNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Race" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ethnicity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LanguageKnown" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CellPhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="WorkPhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MaritalStatus" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CitizenshipStatus" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Id" Type="Int32" />
+          <Property Name="StateName" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Plan_Id" Type="Int32" />
+          <Property Name="MembershipBillingCycle" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MembershipDueDate" Type="DateTime" Precision="3" />
+          <Property Name="ANetSubscriptionId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ANetCustomerProfileId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ANetCustomerPaymentProfileId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Files" Relationship="Self.fk_Users_Files" FromRole="tbl_Users" ToRole="Files" />
+          <NavigationProperty Name="UserLogins" Relationship="Self.FK_UserLogin_ToTable" FromRole="tbl_Users" ToRole="UserLogin" />
+          <NavigationProperty Name="Roles" Relationship="Self.UserRoles" FromRole="tbl_Users" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="tbl_UsersHealthRecordsAccess">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="createdDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="accessToken" Type="Int32" Nullable="false" />
+          <Property Name="phraseKey" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="notifyingEmail" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="notifyingPerson" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int64" Nullable="false" />
+          <Property Name="FailedAttemptCount" Type="Int32" Nullable="false" />
+          <Property Name="LockedEndDtUTC" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_Users" Relationship="Self.FK_UserLogin_ToTable" FromRole="UserLogin" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_Users_Customers">
+          <Key>
+            <PropertyRef Name="User_Id" />
+            <PropertyRef Name="Customer_Id" />
+          </Key>
+          <Property Name="User_Id" Type="Int32" Nullable="false" />
+          <Property Name="Customer_Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="view_Ailments">
+          <Key>
+            <PropertyRef Name="ailment_id" />
+            <PropertyRef Name="ailment_name" />
+          </Key>
+          <Property Name="ailment_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ailment_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="view_Customer_Ailments">
+          <Key>
+            <PropertyRef Name="ailment_id" />
+            <PropertyRef Name="ailment_name" />
+            <PropertyRef Name="cust_ailment_id" />
+            <PropertyRef Name="customer_id" />
+            <PropertyRef Name="Expr1" />
+          </Key>
+          <Property Name="ailment_id" Type="Int64" Nullable="false" />
+          <Property Name="ailment_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cust_ailment_id" Type="Int64" Nullable="false" />
+          <Property Name="customer_id" Type="Int64" Nullable="false" />
+          <Property Name="Expr1" Type="Int64" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="view_Customer_Surgeries">
+          <Key>
+            <PropertyRef Name="start_date" />
+            <PropertyRef Name="surgery_name" />
+            <PropertyRef Name="surgery_id" />
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="end_date" Type="DateTime" Precision="3" />
+          <Property Name="start_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="surgery_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="surgery_id" Type="Int64" Nullable="false" />
+          <Property Name="surgery_desc" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="user_id" Type="Int64" Nullable="false" />
+          <Property Name="customer_id" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="view_Surgeries">
+          <Key>
+            <PropertyRef Name="surgery_id" />
+            <PropertyRef Name="surgery_name" />
+          </Key>
+          <Property Name="surgery_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="surgery_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_RoleContentAccess_Content">
+          <End Role="Content" Type="Self.Content" Multiplicity="1" />
+          <End Role="RoleContentAccess" Type="Self.RoleContentAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Content">
+              <PropertyRef Name="ContentId" />
+            </Principal>
+            <Dependent Role="RoleContentAccess">
+              <PropertyRef Name="ContentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_FileStatus_Files">
+          <End Role="FileStatus" Type="Self.FileStatu" Multiplicity="1" />
+          <End Role="Files" Type="Self.File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Files">
+              <PropertyRef Name="statusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Folders_Files">
+          <End Role="Folders" Type="Self.Folder" Multiplicity="1" />
+          <End Role="Files" Type="Self.File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Folders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Files">
+              <PropertyRef Name="folderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Users_Files">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+          <End Role="Files" Type="Self.File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Files">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleContentAccess_Roles">
+          <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+          <End Role="RoleContentAccess" Type="Self.RoleContentAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="RoleContentAccess">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Customers_tbl_States">
+          <End Role="tbl_States" Type="Self.tbl_States" Multiplicity="0..1" />
+          <End Role="tbl_Customers" Type="Self.tbl_Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_States">
+              <PropertyRef Name="State_Id" />
+            </Principal>
+            <Dependent Role="tbl_Customers">
+              <PropertyRef Name="State_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLogin_ToTable">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+          <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="UserLogin">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserRoles">
+          <End Role="Roles" Type="Self.Role" Multiplicity="*" />
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="*" />
+        </Association>
+        <Association Name="tbl_Role_Asset_Permissions">
+          <End Role="tbl_Assets" Type="Self.tbl_Assets" Multiplicity="*" />
+          <End Role="tbl_Roles" Type="Self.tbl_Roles" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="UnifiedhintsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Contents" EntityType="Self.Content" />
+          <EntitySet Name="Files" EntityType="Self.File" />
+          <EntitySet Name="FileStatus" EntityType="Self.FileStatu" />
+          <EntitySet Name="Folders" EntityType="Self.Folder" />
+          <EntitySet Name="Links" EntityType="Self.Link" />
+          <EntitySet Name="MessageSentByFaxes" EntityType="Self.MessageSentByFax" />
+          <EntitySet Name="PricingPlans" EntityType="Self.PricingPlan" />
+          <EntitySet Name="RoleContentAccesses" EntityType="Self.RoleContentAccess" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="tbl_Ailment_CustSurgeries" EntityType="Self.tbl_Ailment_CustSurgeries" />
+          <EntitySet Name="tbl_Ailments" EntityType="Self.tbl_Ailments" />
+          <EntitySet Name="tbl_Assets" EntityType="Self.tbl_Assets" />
+          <EntitySet Name="tbl_Customer_Ailment" EntityType="Self.tbl_Customer_Ailment" />
+          <EntitySet Name="tbl_Customer_Allergies" EntityType="Self.tbl_Customer_Allergies" />
+          <EntitySet Name="tbl_Customer_Medications" EntityType="Self.tbl_Customer_Medications" />
+          <EntitySet Name="tbl_Customer_Providers" EntityType="Self.tbl_Customer_Providers" />
+          <EntitySet Name="tbl_Customer_Schedule" EntityType="Self.tbl_Customer_Schedule" />
+          <EntitySet Name="tbl_Customer_Surgery" EntityType="Self.tbl_Customer_Surgery" />
+          <EntitySet Name="tbl_Customers" EntityType="Self.tbl_Customers" />
+          <EntitySet Name="tbl_CustomerStatus" EntityType="Self.tbl_CustomerStatus" />
+          <EntitySet Name="tbl_DocumentationInfo" EntityType="Self.tbl_DocumentationInfo" />
+          <EntitySet Name="tbl_EmergencyContacts" EntityType="Self.tbl_EmergencyContacts" />
+          <EntitySet Name="tbl_EmployerInfo" EntityType="Self.tbl_EmployerInfo" />
+          <EntitySet Name="tbl_InsuranceInfo" EntityType="Self.tbl_InsuranceInfo" />
+          <EntitySet Name="tbl_Roles" EntityType="Self.tbl_Roles" />
+          <EntitySet Name="tbl_States" EntityType="Self.tbl_States" />
+          <EntitySet Name="tbl_Surgeries" EntityType="Self.tbl_Surgeries" />
+          <EntitySet Name="tbl_Surgery_CustAilments" EntityType="Self.tbl_Surgery_CustAilments" />
+          <EntitySet Name="tbl_UserLoginInfo" EntityType="Self.tbl_UserLoginInfo" />
+          <EntitySet Name="tbl_Users" EntityType="Self.tbl_Users" />
+          <EntitySet Name="tbl_UsersHealthRecordsAccess" EntityType="Self.tbl_UsersHealthRecordsAccess" />
+          <EntitySet Name="UserLogins" EntityType="Self.UserLogin" />
+          <EntitySet Name="tbl_Users_Customers" EntityType="Self.tbl_Users_Customers" />
+          <EntitySet Name="view_Ailments" EntityType="Self.view_Ailments" />
+          <EntitySet Name="view_Customer_Ailments" EntityType="Self.view_Customer_Ailments" />
+          <EntitySet Name="view_Customer_Surgeries" EntityType="Self.view_Customer_Surgeries" />
+          <EntitySet Name="view_Surgeries" EntityType="Self.view_Surgeries" />
+          <AssociationSet Name="FK_RoleContentAccess_Content" Association="Self.FK_RoleContentAccess_Content">
+            <End Role="Content" EntitySet="Contents" />
+            <End Role="RoleContentAccess" EntitySet="RoleContentAccesses" />
+          </AssociationSet>
+          <AssociationSet Name="fk_FileStatus_Files" Association="Self.fk_FileStatus_Files">
+            <End Role="FileStatus" EntitySet="FileStatus" />
+            <End Role="Files" EntitySet="Files" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Folders_Files" Association="Self.fk_Folders_Files">
+            <End Role="Folders" EntitySet="Folders" />
+            <End Role="Files" EntitySet="Files" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Users_Files" Association="Self.fk_Users_Files">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="Files" EntitySet="Files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleContentAccess_Roles" Association="Self.FK_RoleContentAccess_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RoleContentAccess" EntitySet="RoleContentAccesses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Customers_tbl_States" Association="Self.FK_tbl_Customers_tbl_States">
+            <End Role="tbl_States" EntitySet="tbl_States" />
+            <End Role="tbl_Customers" EntitySet="tbl_Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLogin_ToTable" Association="Self.FK_UserLogin_ToTable">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="UserLogin" EntitySet="UserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="UserRoles" Association="Self.UserRoles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+          </AssociationSet>
+          <AssociationSet Name="tbl_Role_Asset_Permissions" Association="Self.tbl_Role_Asset_Permissions">
+            <End Role="tbl_Assets" EntitySet="tbl_Assets" />
+            <End Role="tbl_Roles" EntitySet="tbl_Roles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UnifiedhintsModelStoreContainer" CdmEntityContainer="UnifiedhintsEntities">
+          <EntitySetMapping Name="Contents">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.Content">
+              <MappingFragment StoreEntitySet="Content">
+                <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Files">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.File">
+              <MappingFragment StoreEntitySet="Files">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="directoryFileId" ColumnName="directoryFileId" />
+                <ScalarProperty Name="fileName" ColumnName="fileName" />
+                <ScalarProperty Name="folderId" ColumnName="folderId" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="statusId" ColumnName="statusId" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileStatus">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.FileStatu">
+              <MappingFragment StoreEntitySet="FileStatus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="statusName" ColumnName="statusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Folders">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.Folder">
+              <MappingFragment StoreEntitySet="Folders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="folderName" ColumnName="folderName" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Links">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.Link">
+              <MappingFragment StoreEntitySet="Links">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="Link1" ColumnName="Link" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessageSentByFaxes">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.MessageSentByFax">
+              <MappingFragment StoreEntitySet="MessageSentByFax">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="messageId" ColumnName="messageId" />
+                <ScalarProperty Name="messageStatus" ColumnName="messageStatus" />
+                <ScalarProperty Name="recipientFaxNumber" ColumnName="recipientFaxNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PricingPlans">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.PricingPlan">
+              <MappingFragment StoreEntitySet="PricingPlan">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PlanName" ColumnName="PlanName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="MonthlyPrice" ColumnName="MonthlyPrice" />
+                <ScalarProperty Name="AnnuallyPrice" ColumnName="AnnuallyPrice" />
+                <ScalarProperty Name="PromotionCode" ColumnName="PromotionCode" />
+                <ScalarProperty Name="PromoBasePlanId" ColumnName="PromoBasePlanId" />
+                <ScalarProperty Name="PromoAvailabilityStartDate" ColumnName="PromoAvailabilityStartDate" />
+                <ScalarProperty Name="PromoAvailabilityEndDate" ColumnName="PromoAvailabilityEndDate" />
+                <ScalarProperty Name="PromoDurationAnnually" ColumnName="PromoDurationAnnually" />
+                <ScalarProperty Name="PromoDurationMonthly" ColumnName="PromoDurationMonthly" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleContentAccesses">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.RoleContentAccess">
+              <MappingFragment StoreEntitySet="RoleContentAccess">
+                <ScalarProperty Name="RoleContentAccessId" ColumnName="RoleContentAccessId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Ailment_CustSurgeries">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Ailment_CustSurgeries">
+              <MappingFragment StoreEntitySet="tbl_Ailment_CustSurgeries">
+                <ScalarProperty Name="ailment_custSurgery_id" ColumnName="ailment_custSurgery_id" />
+                <ScalarProperty Name="ailment_id" ColumnName="ailment_id" />
+                <ScalarProperty Name="cust_surgery_id" ColumnName="cust_surgery_id" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="change_date" ColumnName="change_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Ailments">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Ailments">
+              <MappingFragment StoreEntitySet="tbl_Ailments">
+                <ScalarProperty Name="ailment_id" ColumnName="ailment_id" />
+                <ScalarProperty Name="ailment_name" ColumnName="ailment_name" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="change_date" ColumnName="change_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Assets">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Assets">
+              <MappingFragment StoreEntitySet="tbl_Assets">
+                <ScalarProperty Name="Asset_Id" ColumnName="Asset_Id" />
+                <ScalarProperty Name="AssetName" ColumnName="AssetName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Customer_Ailment">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Customer_Ailment">
+              <MappingFragment StoreEntitySet="tbl_Customer_Ailment">
+                <ScalarProperty Name="cust_ailment_id" ColumnName="cust_ailment_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="ailment_id" ColumnName="ailment_id" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="change_date" ColumnName="change_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="ailment_nickname" ColumnName="ailment_nickname" />
+                <ScalarProperty Name="new_value" ColumnName="new_value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Customer_Allergies">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Customer_Allergies">
+              <MappingFragment StoreEntitySet="tbl_Customer_Allergies">
+                <ScalarProperty Name="allergy_id" ColumnName="allergy_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="allergy_name" ColumnName="allergy_name" />
+                <ScalarProperty Name="allergy_desc" ColumnName="allergy_desc" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="change_date" ColumnName="change_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Customer_Medications">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Customer_Medications">
+              <MappingFragment StoreEntitySet="tbl_Customer_Medications">
+                <ScalarProperty Name="medication_id" ColumnName="medication_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="provider_id" ColumnName="provider_id" />
+                <ScalarProperty Name="medication_name" ColumnName="medication_name" />
+                <ScalarProperty Name="medication_desc" ColumnName="medication_desc" />
+                <ScalarProperty Name="medication_dose" ColumnName="medication_dose" />
+                <ScalarProperty Name="medication_route" ColumnName="medication_route" />
+                <ScalarProperty Name="medication_frequency" ColumnName="medication_frequency" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="change_date" ColumnName="change_date" />
+                <ScalarProperty Name="FIXEDOTC" ColumnName="FIXEDOTC" />
+                <ScalarProperty Name="OTC" ColumnName="OTC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Customer_Providers">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Customer_Providers">
+              <MappingFragment StoreEntitySet="tbl_Customer_Providers">
+                <ScalarProperty Name="provider_id" ColumnName="provider_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="provider_name" ColumnName="provider_name" />
+                <ScalarProperty Name="address1" ColumnName="address1" />
+                <ScalarProperty Name="address2" ColumnName="address2" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="specialty" ColumnName="specialty" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="first" ColumnName="first" />
+                <ScalarProperty Name="last" ColumnName="last" />
+                <ScalarProperty Name="zip" ColumnName="zip" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="website" ColumnName="website" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="change_date" ColumnName="change_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Customer_Schedule">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Customer_Schedule">
+              <MappingFragment StoreEntitySet="tbl_Customer_Schedule">
+                <ScalarProperty Name="schedule_id" ColumnName="schedule_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="provider_id" ColumnName="provider_id" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="change_date" ColumnName="change_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="event_name" ColumnName="event_name" />
+                <ScalarProperty Name="reason" ColumnName="reason" />
+                <ScalarProperty Name="allday" ColumnName="allday" />
+                <ScalarProperty Name="columnnew" ColumnName="columnnew" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Customer_Surgery">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Customer_Surgery">
+              <MappingFragment StoreEntitySet="tbl_Customer_Surgery">
+                <ScalarProperty Name="cust_surgery_id" ColumnName="cust_surgery_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="surgery_id" ColumnName="surgery_id" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="change_date" ColumnName="change_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="surgery_desc" ColumnName="surgery_desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Customers">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Customers">
+              <MappingFragment StoreEntitySet="tbl_Customers">
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+                <ScalarProperty Name="SocialSecurityNo" ColumnName="SocialSecurityNo" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Race" ColumnName="Race" />
+                <ScalarProperty Name="Ethnicity" ColumnName="Ethnicity" />
+                <ScalarProperty Name="LanguageKnown" ColumnName="LanguageKnown" />
+                <ScalarProperty Name="PrimaryAddress" ColumnName="PrimaryAddress" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State_Id" ColumnName="State_Id" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="HomePhoneNumber" ColumnName="HomePhoneNumber" />
+                <ScalarProperty Name="CellPhoneNumber" ColumnName="CellPhoneNumber" />
+                <ScalarProperty Name="WorkPhoneNumber" ColumnName="WorkPhoneNumber" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="CitizenshipStatus" ColumnName="CitizenshipStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CustomerStatus">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_CustomerStatus">
+              <MappingFragment StoreEntitySet="tbl_CustomerStatus">
+                <ScalarProperty Name="CustomerStatus_Id" ColumnName="CustomerStatus_Id" />
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="EmergencyContact_Id" ColumnName="EmergencyContact_Id" />
+                <ScalarProperty Name="EmployerInfo_Id" ColumnName="EmployerInfo_Id" />
+                <ScalarProperty Name="InsuranceInfo_Id" ColumnName="InsuranceInfo_Id" />
+                <ScalarProperty Name="UpdateTimeStamp" ColumnName="UpdateTimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_DocumentationInfo">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_DocumentationInfo">
+              <MappingFragment StoreEntitySet="tbl_DocumentationInfo">
+                <ScalarProperty Name="DocumentationInfo_Id" ColumnName="DocumentationInfo_Id" />
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+                <ScalarProperty Name="DocumentType" ColumnName="DocumentType" />
+                <ScalarProperty Name="DocumentStatus" ColumnName="DocumentStatus" />
+                <ScalarProperty Name="ReceivedBy" ColumnName="ReceivedBy" />
+                <ScalarProperty Name="DocumentNo" ColumnName="DocumentNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_EmergencyContacts">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_EmergencyContacts">
+              <MappingFragment StoreEntitySet="tbl_EmergencyContacts">
+                <ScalarProperty Name="EmergencyContact_Id" ColumnName="EmergencyContact_Id" />
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="RelationshiptoPatient" ColumnName="RelationshiptoPatient" />
+                <ScalarProperty Name="ContactAddress" ColumnName="ContactAddress" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State_Id" ColumnName="State_Id" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="IsSameAsPatientsAddress" ColumnName="IsSameAsPatientsAddress" />
+                <ScalarProperty Name="HomePhoneNumber" ColumnName="HomePhoneNumber" />
+                <ScalarProperty Name="CellPhoneNumber" ColumnName="CellPhoneNumber" />
+                <ScalarProperty Name="WorkPhoneNumber" ColumnName="WorkPhoneNumber" />
+                <ScalarProperty Name="IsALegalGuardian" ColumnName="IsALegalGuardian" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_EmployerInfo">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_EmployerInfo">
+              <MappingFragment StoreEntitySet="tbl_EmployerInfo">
+                <ScalarProperty Name="EmployerInfo_Id" ColumnName="EmployerInfo_Id" />
+                <ScalarProperty Name="EmployerName" ColumnName="EmployerName" />
+                <ScalarProperty Name="EmploymentStatus" ColumnName="EmploymentStatus" />
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_InsuranceInfo">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_InsuranceInfo">
+              <MappingFragment StoreEntitySet="tbl_InsuranceInfo">
+                <ScalarProperty Name="InsuranceInfo_Id" ColumnName="InsuranceInfo_Id" />
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+                <ScalarProperty Name="PolicyNumber" ColumnName="PolicyNumber" />
+                <ScalarProperty Name="PlanType" ColumnName="PlanType" />
+                <ScalarProperty Name="AuthorizationNumber" ColumnName="AuthorizationNumber" />
+                <ScalarProperty Name="SubscriberAddress" ColumnName="SubscriberAddress" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State_Id" ColumnName="State_Id" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="InsuranceVerificationType" ColumnName="InsuranceVerificationType" />
+                <ScalarProperty Name="RelationshiptoPatient" ColumnName="RelationshiptoPatient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Roles">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Roles">
+              <MappingFragment StoreEntitySet="tbl_Roles">
+                <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_States">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_States">
+              <MappingFragment StoreEntitySet="tbl_States">
+                <ScalarProperty Name="State_Id" ColumnName="State_Id" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="StateAbbreviation" ColumnName="StateAbbreviation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Surgeries">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Surgeries">
+              <MappingFragment StoreEntitySet="tbl_Surgeries">
+                <ScalarProperty Name="surgery_id" ColumnName="surgery_id" />
+                <ScalarProperty Name="surgery_name" ColumnName="surgery_name" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="change_date" ColumnName="change_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Surgery_CustAilments">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Surgery_CustAilments">
+              <MappingFragment StoreEntitySet="tbl_Surgery_CustAilments">
+                <ScalarProperty Name="surgery_custAilment_id" ColumnName="surgery_custAilment_id" />
+                <ScalarProperty Name="surgery_id" ColumnName="surgery_id" />
+                <ScalarProperty Name="cust_ailment_id" ColumnName="cust_ailment_id" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="change_date" ColumnName="change_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_UserLoginInfo">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_UserLoginInfo">
+              <MappingFragment StoreEntitySet="tbl_UserLoginInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="LoginDateTime" ColumnName="LoginDateTime" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Users">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Users">
+              <MappingFragment StoreEntitySet="tbl_Users">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Organization" ColumnName="Organization" />
+                <ScalarProperty Name="PrimaryAddress" ColumnName="PrimaryAddress" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State_Id" ColumnName="State_Id" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="HomePhoneNumber" ColumnName="HomePhoneNumber" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+                <ScalarProperty Name="validation" ColumnName="validation" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="SocialSecurityNo" ColumnName="SocialSecurityNo" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Race" ColumnName="Race" />
+                <ScalarProperty Name="Ethnicity" ColumnName="Ethnicity" />
+                <ScalarProperty Name="LanguageKnown" ColumnName="LanguageKnown" />
+                <ScalarProperty Name="CellPhoneNumber" ColumnName="CellPhoneNumber" />
+                <ScalarProperty Name="WorkPhoneNumber" ColumnName="WorkPhoneNumber" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="CitizenshipStatus" ColumnName="CitizenshipStatus" />
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="Plan_Id" ColumnName="Plan_Id" />
+                <ScalarProperty Name="MembershipBillingCycle" ColumnName="MembershipBillingCycle" />
+                <ScalarProperty Name="MembershipDueDate" ColumnName="MembershipDueDate" />
+                <ScalarProperty Name="ANetSubscriptionId" ColumnName="ANetSubscriptionId" />
+                <ScalarProperty Name="ANetCustomerProfileId" ColumnName="ANetCustomerProfileId" />
+                <ScalarProperty Name="ANetCustomerPaymentProfileId" ColumnName="ANetCustomerPaymentProfileId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_UsersHealthRecordsAccess">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_UsersHealthRecordsAccess">
+              <MappingFragment StoreEntitySet="tbl_UsersHealthRecordsAccess">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="accessToken" ColumnName="accessToken" />
+                <ScalarProperty Name="phraseKey" ColumnName="phraseKey" />
+                <ScalarProperty Name="notifyingEmail" ColumnName="notifyingEmail" />
+                <ScalarProperty Name="notifyingPerson" ColumnName="notifyingPerson" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLogins">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.UserLogin">
+              <MappingFragment StoreEntitySet="UserLogin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="FailedAttemptCount" ColumnName="FailedAttemptCount" />
+                <ScalarProperty Name="LockedEndDtUTC" ColumnName="LockedEndDtUTC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Users_Customers">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.tbl_Users_Customers">
+              <MappingFragment StoreEntitySet="tbl_Users_Customers">
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="view_Ailments">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.view_Ailments">
+              <MappingFragment StoreEntitySet="view_Ailments">
+                <ScalarProperty Name="ailment_id" ColumnName="ailment_id" />
+                <ScalarProperty Name="ailment_name" ColumnName="ailment_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="view_Customer_Ailments">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.view_Customer_Ailments">
+              <MappingFragment StoreEntitySet="view_Customer_Ailments">
+                <ScalarProperty Name="ailment_id" ColumnName="ailment_id" />
+                <ScalarProperty Name="ailment_name" ColumnName="ailment_name" />
+                <ScalarProperty Name="cust_ailment_id" ColumnName="cust_ailment_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="view_Customer_Surgeries">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.view_Customer_Surgeries">
+              <MappingFragment StoreEntitySet="view_Customer_Surgeries">
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="surgery_name" ColumnName="surgery_name" />
+                <ScalarProperty Name="surgery_id" ColumnName="surgery_id" />
+                <ScalarProperty Name="surgery_desc" ColumnName="surgery_desc" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="view_Surgeries">
+            <EntityTypeMapping TypeName="UnifiedhintsModel.view_Surgeries">
+              <MappingFragment StoreEntitySet="view_Surgeries">
+                <ScalarProperty Name="surgery_id" ColumnName="surgery_id" />
+                <ScalarProperty Name="surgery_name" ColumnName="surgery_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="UserRoles" TypeName="UnifiedhintsModel.UserRoles" StoreEntitySet="UserRoles">
+            <EndProperty Name="Roles">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="tbl_Users">
+              <ScalarProperty Name="user_id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="tbl_Role_Asset_Permissions" TypeName="UnifiedhintsModel.tbl_Role_Asset_Permissions" StoreEntitySet="tbl_Role_Asset_Permissions">
+            <EndProperty Name="tbl_Assets">
+              <ScalarProperty Name="Asset_Id" ColumnName="Asset_Id" />
+            </EndProperty>
+            <EndProperty Name="tbl_Roles">
+              <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

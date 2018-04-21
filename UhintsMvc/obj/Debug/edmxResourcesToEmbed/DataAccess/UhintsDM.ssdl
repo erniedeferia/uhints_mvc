@@ -1,0 +1,764 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UnifiedhintsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Content">
+    <Key>
+      <PropertyRef Name="ContentId" />
+    </Key>
+    <Property Name="ContentId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+  </EntityType>
+  <EntityType Name="Files">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="directoryFileId" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="fileName" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="folderId" Type="int" Nullable="false" />
+    <Property Name="userId" Type="bigint" Nullable="false" />
+    <Property Name="statusId" Type="int" Nullable="false" />
+    <Property Name="createdDate" Type="datetime" Nullable="false" />
+    <Property Name="modifiedDate" Type="datetime" />
+    <Property Name="description" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="FileStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="statusName" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Folders">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="folderName" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="createdDate" Type="datetime" Nullable="false" />
+    <Property Name="modifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Links">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="bigint" Nullable="false" />
+    <Property Name="Link" Type="varchar" MaxLength="512" />
+    <Property Name="Remarks" Type="varchar" MaxLength="1024" />
+  </EntityType>
+  <EntityType Name="MessageSentByFax">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="bigint" Nullable="false" />
+    <Property Name="createdDate" Type="datetime" Nullable="false" />
+    <Property Name="messageId" Type="varchar" MaxLength="80" />
+    <Property Name="messageStatus" Type="varchar" MaxLength="80" />
+    <Property Name="recipientFaxNumber" Type="varchar" MaxLength="13" />
+  </EntityType>
+  <EntityType Name="PricingPlan">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlanName" Type="varchar" MaxLength="100" />
+    <Property Name="Description" Type="varchar" MaxLength="100" />
+    <Property Name="MonthlyPrice" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="AnnuallyPrice" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="PromotionCode" Type="varchar" MaxLength="50" />
+    <Property Name="PromoBasePlanId" Type="int" />
+    <Property Name="PromoAvailabilityStartDate" Type="date" />
+    <Property Name="PromoAvailabilityEndDate" Type="date" />
+    <Property Name="PromoDurationAnnually" Type="int" />
+    <Property Name="PromoDurationMonthly" Type="int" />
+  </EntityType>
+  <EntityType Name="RoleContentAccess">
+    <Key>
+      <PropertyRef Name="RoleContentAccessId" />
+    </Key>
+    <Property Name="RoleContentAccessId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="ContentId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+  </EntityType>
+  <EntityType Name="tbl_Ailment_CustSurgeries">
+    <Key>
+      <PropertyRef Name="ailment_custSurgery_id" />
+    </Key>
+    <Property Name="ailment_custSurgery_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ailment_id" Type="bigint" />
+    <Property Name="cust_surgery_id" Type="bigint" />
+    <Property Name="entry_date" Type="datetime" />
+    <Property Name="change_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_Ailments">
+    <Key>
+      <PropertyRef Name="ailment_id" />
+    </Key>
+    <Property Name="ailment_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ailment_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="entry_date" Type="datetime" Nullable="false" />
+    <Property Name="change_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Assets">
+    <Key>
+      <PropertyRef Name="Asset_Id" />
+    </Key>
+    <Property Name="Asset_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssetName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Customer_Ailment">
+    <Key>
+      <PropertyRef Name="cust_ailment_id" />
+    </Key>
+    <Property Name="cust_ailment_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customer_id" Type="bigint" Nullable="false" />
+    <Property Name="ailment_id" Type="bigint" Nullable="false" />
+    <Property Name="entry_date" Type="datetime" Nullable="false" />
+    <Property Name="change_date" Type="datetime" Nullable="false" />
+    <Property Name="start_date" Type="datetime" />
+    <Property Name="end_date" Type="datetime" />
+    <Property Name="ailment_nickname" Type="varchar" MaxLength="100" />
+    <Property Name="new_value" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="tbl_Customer_Allergies">
+    <Key>
+      <PropertyRef Name="allergy_id" />
+    </Key>
+    <Property Name="allergy_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customer_id" Type="bigint" Nullable="false" />
+    <Property Name="allergy_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="allergy_desc" Type="varchar" MaxLength="200" />
+    <Property Name="entry_date" Type="datetime" Nullable="false" />
+    <Property Name="change_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Customer_Medications">
+    <Key>
+      <PropertyRef Name="medication_id" />
+    </Key>
+    <Property Name="medication_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customer_id" Type="bigint" Nullable="false" />
+    <Property Name="provider_id" Type="bigint" />
+    <Property Name="medication_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="medication_desc" Type="varchar" MaxLength="200" />
+    <Property Name="medication_dose" Type="varchar" MaxLength="50" />
+    <Property Name="medication_route" Type="varchar" MaxLength="50" />
+    <Property Name="medication_frequency" Type="varchar" MaxLength="50" />
+    <Property Name="start_date" Type="datetime" Nullable="false" />
+    <Property Name="end_date" Type="datetime" />
+    <Property Name="entry_date" Type="datetime" Nullable="false" />
+    <Property Name="change_date" Type="datetime" Nullable="false" />
+    <Property Name="FIXEDOTC" Type="int" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="OTC" Type="bit" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="tbl_Customer_Providers">
+    <Key>
+      <PropertyRef Name="provider_id" />
+    </Key>
+    <Property Name="provider_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customer_id" Type="bigint" Nullable="false" />
+    <Property Name="provider_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="address1" Type="varchar" MaxLength="100" />
+    <Property Name="address2" Type="varchar" MaxLength="100" />
+    <Property Name="city" Type="varchar" MaxLength="50" />
+    <Property Name="state" Type="varchar" MaxLength="50" />
+    <Property Name="specialty" Type="varchar" MaxLength="50" />
+    <Property Name="phone" Type="varchar" MaxLength="50" />
+    <Property Name="first" Type="varchar" MaxLength="50" />
+    <Property Name="last" Type="varchar" MaxLength="50" />
+    <Property Name="zip" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="150" />
+    <Property Name="website" Type="varchar" MaxLength="150" />
+    <Property Name="comments" Type="varchar" MaxLength="500" />
+    <Property Name="entry_date" Type="datetime" Nullable="false" />
+    <Property Name="change_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Customer_Schedule">
+    <Key>
+      <PropertyRef Name="schedule_id" />
+    </Key>
+    <Property Name="schedule_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customer_id" Type="bigint" Nullable="false" />
+    <Property Name="provider_id" Type="bigint" />
+    <Property Name="entry_date" Type="datetime" Nullable="false" />
+    <Property Name="change_date" Type="datetime" Nullable="false" />
+    <Property Name="start_date" Type="datetime" Nullable="false" />
+    <Property Name="end_date" Type="datetime" Nullable="false" />
+    <Property Name="event_name" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="reason" Type="varchar" MaxLength="150" />
+    <Property Name="allday" Type="int" />
+    <Property Name="columnnew" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_Customer_Surgery">
+    <Key>
+      <PropertyRef Name="cust_surgery_id" />
+    </Key>
+    <Property Name="cust_surgery_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customer_id" Type="bigint" Nullable="false" />
+    <Property Name="surgery_id" Type="bigint" Nullable="false" />
+    <Property Name="entry_date" Type="datetime" Nullable="false" />
+    <Property Name="change_date" Type="datetime" Nullable="false" />
+    <Property Name="start_date" Type="datetime" />
+    <Property Name="end_date" Type="datetime" />
+    <Property Name="surgery_desc" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="tbl_Customers">
+    <Key>
+      <PropertyRef Name="Customer_Id" />
+    </Key>
+    <Property Name="Customer_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="25" />
+    <Property Name="LastName" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="DateofBirth" Type="date" Nullable="false" />
+    <Property Name="SocialSecurityNo" Type="varchar" MaxLength="10" />
+    <Property Name="Gender" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Race" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Ethnicity" Type="varchar" MaxLength="25" />
+    <Property Name="LanguageKnown" Type="varchar" MaxLength="25" />
+    <Property Name="PrimaryAddress" Type="varchar" MaxLength="75" />
+    <Property Name="City" Type="varchar" MaxLength="25" />
+    <Property Name="State_Id" Type="int" />
+    <Property Name="StateName" Type="char" MaxLength="2" />
+    <Property Name="Zipcode" Type="varchar" MaxLength="5" />
+    <Property Name="HomePhoneNumber" Type="varchar" MaxLength="10" />
+    <Property Name="CellPhoneNumber" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="WorkPhoneNumber" Type="varchar" MaxLength="10" />
+    <Property Name="EmailId" Type="varchar" MaxLength="50" />
+    <Property Name="MaritalStatus" Type="varchar" MaxLength="30" />
+    <Property Name="CitizenshipStatus" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="tbl_CustomerStatus">
+    <Key>
+      <PropertyRef Name="CustomerStatus_Id" />
+    </Key>
+    <Property Name="CustomerStatus_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Customer_Id" Type="int" />
+    <Property Name="User_Id" Type="int" />
+    <Property Name="EmergencyContact_Id" Type="int" />
+    <Property Name="EmployerInfo_Id" Type="int" />
+    <Property Name="InsuranceInfo_Id" Type="int" />
+    <Property Name="UpdateTimeStamp" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_DocumentationInfo">
+    <Key>
+      <PropertyRef Name="DocumentationInfo_Id" />
+    </Key>
+    <Property Name="DocumentationInfo_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Customer_Id" Type="int" Nullable="false" />
+    <Property Name="DocumentType" Type="varchar" MaxLength="25" />
+    <Property Name="DocumentStatus" Type="varchar" MaxLength="25" />
+    <Property Name="ReceivedBy" Type="varchar" MaxLength="75" />
+    <Property Name="DocumentNo" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_EmergencyContacts">
+    <Key>
+      <PropertyRef Name="EmergencyContact_Id" />
+    </Key>
+    <Property Name="EmergencyContact_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Customer_Id" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="25" />
+    <Property Name="LastName" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="RelationshiptoPatient" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ContactAddress" Type="varchar" MaxLength="75" />
+    <Property Name="City" Type="varchar" MaxLength="25" />
+    <Property Name="State_Id" Type="int" />
+    <Property Name="StateName" Type="char" MaxLength="2" />
+    <Property Name="Zipcode" Type="varchar" MaxLength="5" />
+    <Property Name="IsSameAsPatientsAddress" Type="bit" />
+    <Property Name="HomePhoneNumber" Type="varchar" MaxLength="10" />
+    <Property Name="CellPhoneNumber" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="WorkPhoneNumber" Type="varchar" MaxLength="10" />
+    <Property Name="IsALegalGuardian" Type="varchar" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="tbl_EmployerInfo">
+    <Key>
+      <PropertyRef Name="EmployerInfo_Id" />
+    </Key>
+    <Property Name="EmployerInfo_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployerName" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="EmploymentStatus" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Customer_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_InsuranceInfo">
+    <Key>
+      <PropertyRef Name="InsuranceInfo_Id" />
+    </Key>
+    <Property Name="InsuranceInfo_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Customer_Id" Type="int" Nullable="false" />
+    <Property Name="PaymentType" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="PolicyNumber" Type="varchar" MaxLength="25" />
+    <Property Name="PlanType" Type="varchar" MaxLength="25" />
+    <Property Name="AuthorizationNumber" Type="varchar" MaxLength="25" />
+    <Property Name="SubscriberAddress" Type="varchar" MaxLength="75" />
+    <Property Name="City" Type="varchar" MaxLength="25" />
+    <Property Name="State_Id" Type="int" />
+    <Property Name="StateName" Type="char" MaxLength="2" />
+    <Property Name="Zipcode" Type="varchar" MaxLength="5" />
+    <Property Name="InsuranceVerificationType" Type="varchar" MaxLength="30" />
+    <Property Name="RelationshiptoPatient" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Unifiedhints.dbo.tbl_Role_Asset_Permissions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tbl_Role_Asset_Permissions">
+    <Key>
+      <PropertyRef Name="Role_Id" />
+      <PropertyRef Name="Asset_Id" />
+    </Key>
+    <Property Name="Role_Id" Type="int" Nullable="false" />
+    <Property Name="Asset_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Roles">
+    <Key>
+      <PropertyRef Name="Role_Id" />
+    </Key>
+    <Property Name="Role_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_States">
+    <Key>
+      <PropertyRef Name="State_Id" />
+    </Key>
+    <Property Name="State_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StateName" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="StateAbbreviation" Type="char" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Surgeries">
+    <Key>
+      <PropertyRef Name="surgery_id" />
+    </Key>
+    <Property Name="surgery_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="surgery_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="entry_date" Type="datetime" Nullable="false" />
+    <Property Name="change_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Surgery_CustAilments">
+    <Key>
+      <PropertyRef Name="surgery_custAilment_id" />
+    </Key>
+    <Property Name="surgery_custAilment_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="surgery_id" Type="bigint" />
+    <Property Name="cust_ailment_id" Type="bigint" />
+    <Property Name="entry_date" Type="datetime" />
+    <Property Name="change_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_UserLoginInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="LoginDateTime" Type="datetime" Nullable="false" />
+    <Property Name="IpAddress" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="tbl_Users">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="Username" Type="varchar" MaxLength="25" />
+    <Property Name="FirstName" Type="varchar" MaxLength="25" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="25" />
+    <Property Name="LastName" Type="varchar" MaxLength="25" />
+    <Property Name="DateofBirth" Type="date" />
+    <Property Name="Password" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Organization" Type="varchar" MaxLength="50" />
+    <Property Name="PrimaryAddress" Type="varchar" MaxLength="75" />
+    <Property Name="City" Type="varchar" MaxLength="25" />
+    <Property Name="State_Id" Type="int" />
+    <Property Name="Zipcode" Type="varchar" MaxLength="5" />
+    <Property Name="HomePhoneNumber" Type="varchar" MaxLength="10" />
+    <Property Name="Status" Type="char" MaxLength="1" />
+    <Property Name="Role_Id" Type="int" />
+    <Property Name="validation" Type="varchar" MaxLength="100" />
+    <Property Name="user_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SocialSecurityNo" Type="varchar" MaxLength="10" />
+    <Property Name="Gender" Type="varchar" MaxLength="50" />
+    <Property Name="Race" Type="varchar" MaxLength="50" />
+    <Property Name="Ethnicity" Type="varchar" MaxLength="50" />
+    <Property Name="LanguageKnown" Type="varchar" MaxLength="50" />
+    <Property Name="CellPhoneNumber" Type="varchar" MaxLength="10" />
+    <Property Name="WorkPhoneNumber" Type="varchar" MaxLength="10" />
+    <Property Name="MaritalStatus" Type="varchar" MaxLength="30" />
+    <Property Name="CitizenshipStatus" Type="varchar" MaxLength="30" />
+    <Property Name="Customer_Id" Type="int" />
+    <Property Name="StateName" Type="varchar" MaxLength="2" />
+    <Property Name="Plan_Id" Type="int" />
+    <Property Name="MembershipBillingCycle" Type="varchar" MaxLength="10" />
+    <Property Name="MembershipDueDate" Type="datetime" />
+    <Property Name="ANetSubscriptionId" Type="varchar" MaxLength="20" />
+    <Property Name="ANetCustomerProfileId" Type="varchar" MaxLength="20" />
+    <Property Name="ANetCustomerPaymentProfileId" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Unifiedhints.dbo.tbl_Users_Customers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tbl_Users_Customers">
+    <Key>
+      <PropertyRef Name="User_Id" />
+      <PropertyRef Name="Customer_Id" />
+    </Key>
+    <Property Name="User_Id" Type="int" Nullable="false" />
+    <Property Name="Customer_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_UsersHealthRecordsAccess">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="int" Nullable="false" />
+    <Property Name="createdDate" Type="datetime" Nullable="false" />
+    <Property Name="accessToken" Type="int" Nullable="false" />
+    <Property Name="phraseKey" Type="varchar" MaxLength="40" />
+    <Property Name="notifyingEmail" Type="varchar" MaxLength="80" />
+    <Property Name="notifyingPerson" Type="varchar" MaxLength="80" />
+  </EntityType>
+  <EntityType Name="UserLogin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="bigint" Nullable="false" />
+    <Property Name="FailedAttemptCount" Type="int" Nullable="false" />
+    <Property Name="LockedEndDtUTC" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Unifiedhints.dbo.view_Ailments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_Ailments">
+    <Key>
+      <PropertyRef Name="ailment_id" />
+      <PropertyRef Name="ailment_name" />
+    </Key>
+    <Property Name="ailment_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ailment_name" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Unifiedhints.dbo.view_Customer_Ailments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_Customer_Ailments">
+    <Key>
+      <PropertyRef Name="ailment_id" />
+      <PropertyRef Name="ailment_name" />
+      <PropertyRef Name="cust_ailment_id" />
+      <PropertyRef Name="customer_id" />
+      <PropertyRef Name="Expr1" />
+    </Key>
+    <Property Name="ailment_id" Type="bigint" Nullable="false" />
+    <Property Name="ailment_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="cust_ailment_id" Type="bigint" Nullable="false" />
+    <Property Name="customer_id" Type="bigint" Nullable="false" />
+    <Property Name="Expr1" Type="bigint" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="25" />
+    <Property Name="LastName" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Unifiedhints.dbo.view_Customer_Surgeries' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_Customer_Surgeries">
+    <Key>
+      <PropertyRef Name="start_date" />
+      <PropertyRef Name="surgery_name" />
+      <PropertyRef Name="surgery_id" />
+      <PropertyRef Name="user_id" />
+      <PropertyRef Name="customer_id" />
+    </Key>
+    <Property Name="end_date" Type="datetime" />
+    <Property Name="start_date" Type="datetime" Nullable="false" />
+    <Property Name="surgery_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="surgery_id" Type="bigint" Nullable="false" />
+    <Property Name="surgery_desc" Type="varchar" MaxLength="300" />
+    <Property Name="FirstName" Type="varchar" MaxLength="25" />
+    <Property Name="LastName" Type="varchar" MaxLength="25" />
+    <Property Name="user_id" Type="bigint" Nullable="false" />
+    <Property Name="customer_id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Unifiedhints.dbo.view_Surgeries' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_Surgeries">
+    <Key>
+      <PropertyRef Name="surgery_id" />
+      <PropertyRef Name="surgery_name" />
+    </Key>
+    <Property Name="surgery_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="surgery_name" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_FileStatus_Files">
+    <End Role="FileStatus" Type="Self.FileStatus" Multiplicity="1" />
+    <End Role="Files" Type="Self.Files" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FileStatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Files">
+        <PropertyRef Name="statusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Folders_Files">
+    <End Role="Folders" Type="Self.Folders" Multiplicity="1" />
+    <End Role="Files" Type="Self.Files" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Folders">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Files">
+        <PropertyRef Name="folderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleContentAccess_Content">
+    <End Role="Content" Type="Self.Content" Multiplicity="1" />
+    <End Role="RoleContentAccess" Type="Self.RoleContentAccess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Content">
+        <PropertyRef Name="ContentId" />
+      </Principal>
+      <Dependent Role="RoleContentAccess">
+        <PropertyRef Name="ContentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleContentAccess_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="RoleContentAccess" Type="Self.RoleContentAccess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="RoleContentAccess">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Customers_tbl_States">
+    <End Role="tbl_States" Type="Self.tbl_States" Multiplicity="0..1" />
+    <End Role="tbl_Customers" Type="Self.tbl_Customers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_States">
+        <PropertyRef Name="State_Id" />
+      </Principal>
+      <Dependent Role="tbl_Customers">
+        <PropertyRef Name="State_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Role_Asset_Permissions_tbl_Assets">
+    <End Role="tbl_Assets" Type="Self.tbl_Assets" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tbl_Role_Asset_Permissions" Type="Self.tbl_Role_Asset_Permissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Assets">
+        <PropertyRef Name="Asset_Id" />
+      </Principal>
+      <Dependent Role="tbl_Role_Asset_Permissions">
+        <PropertyRef Name="Asset_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Role_Asset_Permissions_tbl_Roles">
+    <End Role="tbl_Roles" Type="Self.tbl_Roles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tbl_Role_Asset_Permissions" Type="Self.tbl_Role_Asset_Permissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Roles">
+        <PropertyRef Name="Role_Id" />
+      </Principal>
+      <Dependent Role="tbl_Role_Asset_Permissions">
+        <PropertyRef Name="Role_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserLogin_ToTable">
+    <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Users">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="UserLogin">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRoles_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="UserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRoles_tbl_Users">
+    <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+    <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Users">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="UserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Users_Files">
+    <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+    <End Role="Files" Type="Self.Files" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Users">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="Files">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="UnifiedhintsModelStoreContainer">
+    <EntitySet Name="Content" EntityType="Self.Content" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Files" EntityType="Self.Files" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FileStatus" EntityType="Self.FileStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Folders" EntityType="Self.Folders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Links" EntityType="Self.Links" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MessageSentByFax" EntityType="Self.MessageSentByFax" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PricingPlan" EntityType="Self.PricingPlan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoleContentAccess" EntityType="Self.RoleContentAccess" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Ailment_CustSurgeries" EntityType="Self.tbl_Ailment_CustSurgeries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Ailments" EntityType="Self.tbl_Ailments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Assets" EntityType="Self.tbl_Assets" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Customer_Ailment" EntityType="Self.tbl_Customer_Ailment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Customer_Allergies" EntityType="Self.tbl_Customer_Allergies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Customer_Medications" EntityType="Self.tbl_Customer_Medications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Customer_Providers" EntityType="Self.tbl_Customer_Providers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Customer_Schedule" EntityType="Self.tbl_Customer_Schedule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Customer_Surgery" EntityType="Self.tbl_Customer_Surgery" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Customers" EntityType="Self.tbl_Customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_CustomerStatus" EntityType="Self.tbl_CustomerStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_DocumentationInfo" EntityType="Self.tbl_DocumentationInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_EmergencyContacts" EntityType="Self.tbl_EmergencyContacts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_EmployerInfo" EntityType="Self.tbl_EmployerInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_InsuranceInfo" EntityType="Self.tbl_InsuranceInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Roles" EntityType="Self.tbl_Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_States" EntityType="Self.tbl_States" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Surgeries" EntityType="Self.tbl_Surgeries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Surgery_CustAilments" EntityType="Self.tbl_Surgery_CustAilments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_UserLoginInfo" EntityType="Self.tbl_UserLoginInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Users" EntityType="Self.tbl_Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_UsersHealthRecordsAccess" EntityType="Self.tbl_UsersHealthRecordsAccess" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserLogin" EntityType="Self.UserLogin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Role_Asset_Permissions" EntityType="Self.tbl_Role_Asset_Permissions" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tbl_Role_Asset_Permissions].[Role_Id] AS [Role_Id], 
+    [tbl_Role_Asset_Permissions].[Asset_Id] AS [Asset_Id]
+    FROM [dbo].[tbl_Role_Asset_Permissions] AS [tbl_Role_Asset_Permissions]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tbl_Users_Customers" EntityType="Self.tbl_Users_Customers" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tbl_Users_Customers].[User_Id] AS [User_Id], 
+    [tbl_Users_Customers].[Customer_Id] AS [Customer_Id]
+    FROM [dbo].[tbl_Users_Customers] AS [tbl_Users_Customers]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_Ailments" EntityType="Self.view_Ailments" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_Ailments].[ailment_id] AS [ailment_id], 
+    [view_Ailments].[ailment_name] AS [ailment_name]
+    FROM [dbo].[view_Ailments] AS [view_Ailments]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_Customer_Ailments" EntityType="Self.view_Customer_Ailments" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_Customer_Ailments].[ailment_id] AS [ailment_id], 
+    [view_Customer_Ailments].[ailment_name] AS [ailment_name], 
+    [view_Customer_Ailments].[cust_ailment_id] AS [cust_ailment_id], 
+    [view_Customer_Ailments].[customer_id] AS [customer_id], 
+    [view_Customer_Ailments].[Expr1] AS [Expr1], 
+    [view_Customer_Ailments].[FirstName] AS [FirstName], 
+    [view_Customer_Ailments].[LastName] AS [LastName]
+    FROM [dbo].[view_Customer_Ailments] AS [view_Customer_Ailments]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_Customer_Surgeries" EntityType="Self.view_Customer_Surgeries" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_Customer_Surgeries].[end_date] AS [end_date], 
+    [view_Customer_Surgeries].[start_date] AS [start_date], 
+    [view_Customer_Surgeries].[surgery_name] AS [surgery_name], 
+    [view_Customer_Surgeries].[surgery_id] AS [surgery_id], 
+    [view_Customer_Surgeries].[surgery_desc] AS [surgery_desc], 
+    [view_Customer_Surgeries].[FirstName] AS [FirstName], 
+    [view_Customer_Surgeries].[LastName] AS [LastName], 
+    [view_Customer_Surgeries].[user_id] AS [user_id], 
+    [view_Customer_Surgeries].[customer_id] AS [customer_id]
+    FROM [dbo].[view_Customer_Surgeries] AS [view_Customer_Surgeries]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_Surgeries" EntityType="Self.view_Surgeries" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_Surgeries].[surgery_id] AS [surgery_id], 
+    [view_Surgeries].[surgery_name] AS [surgery_name]
+    FROM [dbo].[view_Surgeries] AS [view_Surgeries]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="fk_FileStatus_Files" Association="Self.fk_FileStatus_Files">
+      <End Role="FileStatus" EntitySet="FileStatus" />
+      <End Role="Files" EntitySet="Files" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Folders_Files" Association="Self.fk_Folders_Files">
+      <End Role="Folders" EntitySet="Folders" />
+      <End Role="Files" EntitySet="Files" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleContentAccess_Content" Association="Self.FK_RoleContentAccess_Content">
+      <End Role="Content" EntitySet="Content" />
+      <End Role="RoleContentAccess" EntitySet="RoleContentAccess" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleContentAccess_Roles" Association="Self.FK_RoleContentAccess_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="RoleContentAccess" EntitySet="RoleContentAccess" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Customers_tbl_States" Association="Self.FK_tbl_Customers_tbl_States">
+      <End Role="tbl_States" EntitySet="tbl_States" />
+      <End Role="tbl_Customers" EntitySet="tbl_Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Role_Asset_Permissions_tbl_Assets" Association="Self.FK_tbl_Role_Asset_Permissions_tbl_Assets">
+      <End Role="tbl_Assets" EntitySet="tbl_Assets" />
+      <End Role="tbl_Role_Asset_Permissions" EntitySet="tbl_Role_Asset_Permissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Role_Asset_Permissions_tbl_Roles" Association="Self.FK_tbl_Role_Asset_Permissions_tbl_Roles">
+      <End Role="tbl_Roles" EntitySet="tbl_Roles" />
+      <End Role="tbl_Role_Asset_Permissions" EntitySet="tbl_Role_Asset_Permissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserLogin_ToTable" Association="Self.FK_UserLogin_ToTable">
+      <End Role="tbl_Users" EntitySet="tbl_Users" />
+      <End Role="UserLogin" EntitySet="UserLogin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRoles_Roles" Association="Self.FK_UserRoles_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="UserRoles" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRoles_tbl_Users" Association="Self.FK_UserRoles_tbl_Users">
+      <End Role="tbl_Users" EntitySet="tbl_Users" />
+      <End Role="UserRoles" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Users_Files" Association="Self.fk_Users_Files">
+      <End Role="tbl_Users" EntitySet="tbl_Users" />
+      <End Role="Files" EntitySet="Files" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
